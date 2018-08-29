@@ -12,6 +12,17 @@ export const formValidator = (data) => {
 	return errors;
 };
 
+export const processErrors = (errors, idSelector) => {
+	let parentNode = document.getElementById(idSelector);
+	parentNode.innerHTML = '';
+	let child = '';
+	for (var key in errors) {
+		child = document.createElement('p');
+		child.innerHTML = errors[key];
+		parentNode.appendChild(child);
+	}
+};
+
 export const removeErrors = data => {
 	for (var key in data) {
 		document.getElementById(key+'_error').innerHTML = '';		

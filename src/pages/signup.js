@@ -1,5 +1,10 @@
 import api from '../utils/api';
-import { formValidator, removeErrors, testEmail } from '../utils';
+import { 
+	formValidator, 
+	removeErrors, 
+	testEmail, 
+	processErrors 
+} from '../utils';
 import { setToken, isLoggedIn, logOut } from '../store';
 
 
@@ -10,11 +15,11 @@ if (isLoggedIn()) {
 	document.getElementById('signup-form').innerHTML = 'You are logged in';
 	document.getElementById('login-link').classList.add('hidden');
 	document.getElementById('logout-link').classList.remove('hidden');
+	// reset token on click listener
+	logOut();
 }
 
-// reset token on click
-logOut();
-
+// initialize form data (reset form fields)
 Object.values(signup.elements).map(el => {
 	if (el.name) {
 		data[el.name] = '';
@@ -52,25 +57,12 @@ const handleInput = () => {
 	});
 };
 
-const process_errors = errors => {
-	let parentNode = document.getElementById('signupErrors');
-	parentNode.innerHTML = '';
-	let child = '';
-	for (var key in errors) {
-		child = document.createElement('p');
-		child.innerHTML = errors[key];
-		parentNode.appendChild(child);
-	}
-};
-
-
 handleKeyUp();
 handleInput();
 handleChange();
 try {
 	signupBtn.addEventListener('click', event => {
 		event.preventDefault();
-		console.log('sign up ..sdfsdfsdfsds');    
 		let errors = formValidator(data);
       
 		if (data.confirm_password !== data.password || data.password === '') {
@@ -93,9 +85,8 @@ try {
 			.post('auth/signup', data)
 			.then(res => res.json())
 			.then(data => {
-				console.error(data.status);
 				if (data.status === 'fail') {
-					process_errors(data.errors);
+					processErrors(data.errors, 'signupErrors');
 					return false;
 				}
 				setToken(data.auth_token);

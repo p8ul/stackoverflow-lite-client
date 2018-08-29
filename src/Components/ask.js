@@ -1,9 +1,13 @@
 import api from '../utils/api';
-import { formValidator, removeErrors, processErrors } from '../utils';
+import { 
+	formValidator, 
+	removeErrors, 
+	processListErrors,
+	testEmail 
+} from '../utils';
 import { setToken, isLoggedIn } from '../store';
 
-const testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
-const loginElement = document.forms.login;
+const askElement = document.forms.ask;
 
 let data = {};
 
@@ -12,7 +16,7 @@ if (isLoggedIn()) {
 }
 
 // initialize form data (reset form fields)
-Object.values(loginElement.elements).map(el => {
+Object.values(askElement.elements).map(el => {
 	if (el.name) {
 		data[el.name] = '';
 		el.value = '';
@@ -20,7 +24,7 @@ Object.values(loginElement.elements).map(el => {
 });
 
 const handleKeyUp = () => {
-	Object.values(loginElement.elements).map(el => {
+	Object.values(askElement.elements).map(el => {
 		el.addEventListener('keyup', e => {
 			data[e.target.name] = e.target.value;
 			console.log(data);
@@ -29,7 +33,18 @@ const handleKeyUp = () => {
 	});
 }; 
 
+const handleInput = () => {
+	Object.values(askElement.elements).map(el => {
+		el.addEventListener('input', e => {
+			data[e.target.name] = e.target.value;
+			console.log(data);
+			removeErrors(data);
+		});
+	});
+};
+
 handleKeyUp();
+handleInput();
 
 try {
 	loginBtn.addEventListener('click', event => {
@@ -45,6 +60,7 @@ try {
     
 		var isValid = Object.keys(errors).length === 0;
 		if (!isValid) {
+			console.log(isValid);
 			return false;
 		}
 		api
@@ -52,7 +68,7 @@ try {
 			.then(res => res.json())
 			.then(data => {
 				if (data.status === 'fail') {
-					processErrors(data.errors, 'loginErrors');
+					processListErrors(data.message, 'loginErrors');
 					return false;
 				}
 				setToken(data.auth_token);
@@ -60,5 +76,3 @@ try {
 			});
 	});
 } catch(error) {}
-
-

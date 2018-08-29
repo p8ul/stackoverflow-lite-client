@@ -3,8 +3,9 @@ const path = require('path');
 module.exports = {
 	mode: 'development',
 	entry: {
-		signup: './src/pages/signup.js',
-		login: './src/pages/login.js'
+		askquestion: './src/Components/ask',
+		signup: './src/Components/signup.js',
+		login: './src/Components/login.js'
 	},
 	output: {
 		path: path.resolve(__dirname, 'public/dist'),

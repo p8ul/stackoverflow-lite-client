@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --watch & live-server public/",
-    "watch": "webpack --watch",
     "build": "webpack --config webpack.config.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-es2016": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "eslint": "4.5.0",
     "eslint-loader": "1.9.0",

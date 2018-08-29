@@ -12,7 +12,7 @@ export const formValidator = (data) => {
 	return errors;
 };
 
-export const processErrors = (errors, idSelector) => {
+export const processObjectErrors = (errors, idSelector) => {
 	let parentNode = document.getElementById(idSelector);
 	parentNode.innerHTML = '';
 	let child = '';
@@ -21,6 +21,15 @@ export const processErrors = (errors, idSelector) => {
 		child.innerHTML = errors[key];
 		parentNode.appendChild(child);
 	}
+};
+
+export const processListErrors = (errors, idSelector) => {
+	let parentNode = document.getElementById(idSelector);
+	parentNode.innerHTML = '';
+	let child = '';
+	child = document.createElement('p');
+	child.innerHTML = errors;
+	parentNode.appendChild(child);
 };
 
 export const removeErrors = data => {

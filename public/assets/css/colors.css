@@ -20,6 +20,10 @@
     color: #fa5903 !important;
 }
 
+.error {
+    color: red;
+}
+
 .bg-black {
     background-color: rgb(51, 49, 49);
 }

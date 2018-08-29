@@ -22,5 +22,7 @@
   },
   "author": "p8ul",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "jwt-decode": "^2.2.0"
+  }
 }

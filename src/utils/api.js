@@ -8,7 +8,7 @@ class Api {
 			method: 'POST',
 			body: JSON.stringify(data),
 			headers: {
-				Authorization: `Bearer ${token}`,
+				Authorization: `JWT ${token}`,
 				'content-type': 'application/json'
 			}
 		});

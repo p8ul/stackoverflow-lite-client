@@ -35,8 +35,13 @@
                             <a href="profile.html">Profile</a>
                         </li>
                         <li>
-                            <a href="login.html" class="text-white floating btn btn-round mt--5 bg-orange">
+                            <a href="login.html" id="login-link" class="text-white floating btn btn-round mt--5 bg-orange">
                                 Login
+                            </a>                                
+                        </li>
+                        <li>
+                            <a href="#" id="logout-link" class="text-white hidden floating btn btn-round mt--5 bg-orange">
+                                Logout
                             </a>                                
                         </li>
                     </ul>
@@ -64,22 +69,53 @@
                     
                 </div>
                 <div class="col-4 pull-right" id="root">
-                    <h4 class="text-primary header-title">Join our community</h4>                    
-                    <form class="form-container" id="signup-form">
+                    <h4 class="text-primary header-title">Join our community</h4>
+                    <div class="error" id="signupErrors"></div>
+                    <form class="form-container" name="signup" id="signup-form">
                         <div class="form-group">
-                            <input class="stretchRight input-control" type='text' id="username" placeholder="USERNAME">
+                            <input 
+                            class="stretchRight input-control" 
+                            type='text' id="username" 
+                            placeholder="USERNAME"
+                            name="username"
+                            required
+                            >
+                            <div class="error" id="username_error"></div>
                         </div>
                         <div class="form-group">
-                            <input class="stretchRight input-control" type='email' id="email" placeholder="EMAIL">
+                            <input 
+                            class="stretchRight input-control"  
+                            type='email' 
+                            id="email" 
+                            placeholder="EMAIL"
+                            name="email"
+                            required
+                            >
+                            <div class="error" id="email_error"></div>
                         </div>
                         <div class="form-group">
-                            <input class="stretchRight input-control" type='password' id="password" placeholder="PASSWORD">
+                            <input 
+                            class="stretchRight input-control" 
+                            type='password' 
+                            id="password" 
+                            placeholder="PASSWORD"
+                            name="password"
+                            required
+                            >
+                            <div class="error" id="password_error"></div>
                         </div>
                         <div class="form-group">
-                            <input class="stretchRight input-control" type='password' id="confirm_password" placeholder="PASSWORD">
+                            <input 
+                            class="stretchRight input-control" 
+                            type='password' id="confirm_password" 
+                            placeholder="PASSWORD"
+                            name="confirm_password"
+                            required
+                            >
+                            <div class="error" id="confirm_password_error"></div>
                         </div>
                         <div class="form-group">
-                            <button id="signup" class="floating btn btn-primary bg-orange p-15 btn-block">
+                            <button id="signupBtn" class="floating btn btn-primary bg-orange p-15 btn-block">
                                 Sign Up 
                             </button>
                         </div>

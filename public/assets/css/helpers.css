@@ -4,6 +4,9 @@
 .text-bold {
     font-weight: bold;
 }
+.hidden {
+    display: none !important;
+}
 .mega-text {
     font-size: 35px;
     font-weight: 900;

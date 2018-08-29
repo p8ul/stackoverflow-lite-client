@@ -192,4 +192,6 @@ textarea {
     margin-bottom: 23px;
 }
 
-
+.error:first-letter {
+    text-transform:capitalize;
+}

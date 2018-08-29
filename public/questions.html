@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Stackoverflow lite - UI</title>
-    <link rel="stylesheet" href="./css/styles.css">    
+    <link rel="stylesheet" href="./assets/css/styles.css">    
 </head>
 <body>
     <div class="main">
@@ -80,9 +80,14 @@
                                     <a href="#" class="floating">Try Premium account</a>
                                 </li>
                                 
-                                <li>                                
-                                    <a href="index.html" class="btn btn-round mt--5 bg-orange">
-                                        Log out
+                                <li>
+                                    <a href="login.html" id="login-link" class="text-white floating btn btn-round mt--5 bg-orange">
+                                        Login
+                                    </a>                                
+                                </li>
+                                <li>
+                                    <a href="#" id="logout-link" class="text-white hidden floating btn btn-round mt--5 bg-orange">
+                                        Logout
                                     </a>                                
                                 </li>
                             </ul>
@@ -108,6 +113,7 @@
                             </div>                       
                         </div>
                         <div class="panel__body m-35">
+                            <div id="questions_list"></div>
                             <!-- question -->
                             <div class="question-list-item">
                                 <div class="col-6">
@@ -219,6 +225,6 @@
 
     </div>
 </body>
-
-<script src="./js/main.js"></script>
+<script src="./assets/js/main.js"></script>
+<script src="./dist/questions.bundle.js"></script>
 </html>

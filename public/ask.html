@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ask &amp; Question - Stackoverflow lite</title>
-    <link rel="stylesheet" href="./css/styles.css">    
+    <link rel="stylesheet" href="./assets/css/styles.css">    
 </head>
 <body>
     <div class="main">
@@ -80,9 +80,14 @@
                                     <a href="#" class="floating">Try Premium account</a>
                                 </li>
                                 
-                                <li>                                
-                                    <a href="index.html" class="btn btn-round mt--5 bg-orange">
-                                        Log out
+                                <li>
+                                    <a href="login.html" id="login-link" class="text-white floating btn btn-round mt--5 bg-orange">
+                                        Login
+                                    </a>                                
+                                </li>
+                                <li>
+                                    <a href="#" id="logout-link" class="text-white hidden floating btn btn-round mt--5 bg-orange">
+                                        Logout
                                     </a>                                
                                 </li>
                             </ul>
@@ -104,20 +109,30 @@
                             </div>
                             <div class="panel__body m-20">
                                 <!-- question -->
-                                <form class="form-ask">
+                                <form class="form-ask" name="ask">
+                                    <div class="error" id="server_errors"></div>
                                     <div class="">
                                         <label>Title</label>
-                                        <input class="stretchRight input-control" type='text' placeholder="What's your programming question? Be specific">
+                                        <input 
+                                        class="stretchRight input-control" 
+                                        type='text'
+                                        name="title" 
+                                        placeholder="What's your programming question? Be specific">
+                                        <div class="error" id="title_error"></div>
                                     </div>
 
                                     <div class="">
                                         <label>Body</label>
-                                        <textarea class="stretchRight input-control" placeholder="Please enter question body here..."></textarea>
-                                        
+                                        <textarea 
+                                        name="body"
+                                        class="stretchRight input-control" 
+                                        placeholder="Please enter question body here...">
+                                        </textarea>
+                                        <div class="error" id="body_error"></div>                                        
                                     </div>
                                    
                                     <div class="">
-                                        <button class="floating pull-left btn btn-primary bg-orange p-15 btn-block">
+                                        <button id="askBtn" class="floating pull-left btn btn-primary bg-orange p-15 btn-block">
                                             Post Your Question
                                         </button>
                                     </div> 
@@ -141,5 +156,6 @@
     </div>
 </body>
 
-<script src="./js/main.js"></script>
+<script src="./assets/js/main.js"></script>
+<script src="./dist/askquestion.bundle.js"></script>
 </html>

@@ -3,7 +3,7 @@ import {
 	formValidator, 
 	removeErrors, 
 	testEmail, 
-	processObjectErrors 
+	processObjectErrors, $on
 } from '../utils';
 import { setToken, isLoggedIn, logOut } from '../store';
 
@@ -27,39 +27,20 @@ Object.values(signup.elements).map(el => {
 	}	
 });
 
-const handleKeyUp = () => {
-	Object.values(signup.elements).map(el => {
-		el.addEventListener('keyup', e => {
-			data[e.target.name] = e.target.value;
-			console.log(data);
-			removeErrors(data);
-		});
-	});
-}; 
+const setState = (e) => {
+	data[e.target.name] = e.target.value;
+	removeErrors(data);
+};
 
-const handleChange = () => {
-	Object.values(signup.elements).map(el => {
-		el.addEventListener('change', e => {
-			data[e.target.name] = e.target.value;
-			console.log(data);
-			removeErrors(data);
-		});
+const handleEvents = () => {
+	Object.values(signup.elements).map(el => {		
+		$on(el, 'keyup',(e)=>{setState(e);});
+		$on(el, 'input',(e)=>{setState(e);});
 	});
 };
 
-const handleInput = () => {
-	Object.values(signup.elements).map(el => {
-		el.addEventListener('input', e => {
-			data[e.target.name] = e.target.value;
-			console.log(data);
-			removeErrors(data);
-		});
-	});
-};
+handleEvents();
 
-handleKeyUp();
-handleInput();
-handleChange();
 try {
 	signupBtn.addEventListener('click', event => {
 		event.preventDefault();
@@ -73,8 +54,6 @@ try {
 		if (!testEmail.test(data.email)) {
 			document.getElementById('email_error').innerHTML = 'Invalid email';
 			return false;
-		} else {
-			document.getElementById('email_error').innerHTML = '';
 		}
     
 		var isValid = Object.keys(errors).length === 0;

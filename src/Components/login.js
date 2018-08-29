@@ -3,7 +3,7 @@ import {
 	formValidator, 
 	removeErrors, 
 	processListErrors,
-	testEmail 
+	testEmail, $on
 } from '../utils';
 import { setToken, isLoggedIn } from '../store';
 
@@ -23,28 +23,18 @@ Object.values(loginElement.elements).map(el => {
 	}	
 });
 
-const handleKeyUp = () => {
-	Object.values(loginElement.elements).map(el => {
-		el.addEventListener('keyup', e => {
-			data[e.target.name] = e.target.value;
-			console.log(data);
-			removeErrors(data);
-		});
-	});
-}; 
-
-const handleInput = () => {
-	Object.values(loginElement.elements).map(el => {
-		el.addEventListener('input', e => {
-			data[e.target.name] = e.target.value;
-			console.log(data);
-			removeErrors(data);
-		});
-	});
+const setState = (e) => {
+	data[e.target.name] = e.target.value;
+	removeErrors(data);
 };
 
-handleKeyUp();
-handleInput();
+const handleEvents = () => {
+	Object.values(loginElement.elements).map(el => {		
+		$on(el, 'keyup',(e)=>{setState(e);});
+		$on(el, 'input',(e)=>{setState(e);});
+	});
+};
+handleEvents();
 
 try {
 	loginBtn.addEventListener('click', event => {

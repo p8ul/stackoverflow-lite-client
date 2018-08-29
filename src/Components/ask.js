@@ -3,17 +3,22 @@ import {
 	formValidator, 
 	removeErrors, 
 	processListErrors,
-	testEmail 
+	$on
 } from '../utils';
-import { setToken, isLoggedIn } from '../store';
+import { getToken, isLoggedIn, logOut } from '../store';
 
 const askElement = document.forms.ask;
 
-let data = {};
-
 if (isLoggedIn()) {
-	window.location.href = '/index.html';
+	document.getElementById('login-link').classList.add('hidden');
+	document.getElementById('logout-link').classList.remove('hidden');
+	// reset token onclick listener
+	logOut();
+} else {
+	window.location.href = '/login.html';
 }
+
+let data = {};
 
 // initialize form data (reset form fields)
 Object.values(askElement.elements).map(el => {
@@ -23,40 +28,25 @@ Object.values(askElement.elements).map(el => {
 	}	
 });
 
-const handleKeyUp = () => {
-	Object.values(askElement.elements).map(el => {
-		el.addEventListener('keyup', e => {
-			data[e.target.name] = e.target.value;
-			console.log(data);
-			removeErrors(data);
-		});
-	});
-}; 
+const setState = (e) => {
+	data[e.target.name] = e.target.value;
+	removeErrors(data);
+};
 
-const handleInput = () => {
-	Object.values(askElement.elements).map(el => {
-		el.addEventListener('input', e => {
-			data[e.target.name] = e.target.value;
-			console.log(data);
-			removeErrors(data);
-		});
+const handleEvents = () => {
+	Object.values(askElement.elements).map(el => {		
+		$on(el, 'keyup',(e)=>{setState(e);});
+		$on(el, 'input',(e)=>{setState(e);});
 	});
 };
 
-handleKeyUp();
-handleInput();
+handleEvents();
+
 
 try {
-	loginBtn.addEventListener('click', event => {
+	askBtn.addEventListener('click', event => {
 		event.preventDefault();
 		let errors = formValidator(data);		
-    
-		if (!testEmail.test(data.email)) {
-			document.getElementById('email_error').innerHTML = 'Invalid email';
-			return false;
-		} else {
-			document.getElementById('email_error').innerHTML = '';
-		}
     
 		var isValid = Object.keys(errors).length === 0;
 		if (!isValid) {
@@ -64,15 +54,13 @@ try {
 			return false;
 		}
 		api
-			.post('auth/login', data)
+			.post('questions/', data, getToken())
 			.then(res => res.json())
 			.then(data => {
 				if (data.status === 'fail') {
-					processListErrors(data.message, 'loginErrors');
+					processListErrors(data.message, 'server_errors');
 					return false;
 				}
-				setToken(data.auth_token);
-				window.location.reload();
 			});
 	});
 } catch(error) {}

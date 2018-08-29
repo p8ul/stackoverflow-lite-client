@@ -3,7 +3,7 @@ import {
 	formValidator, 
 	removeErrors, 
 	testEmail, 
-	processErrors 
+	processObjectErrors 
 } from '../utils';
 import { setToken, isLoggedIn, logOut } from '../store';
 
@@ -86,7 +86,7 @@ try {
 			.then(res => res.json())
 			.then(data => {
 				if (data.status === 'fail') {
-					processErrors(data.errors, 'signupErrors');
+					processObjectErrors(data.errors, 'signupErrors');
 					return false;
 				}
 				setToken(data.auth_token);

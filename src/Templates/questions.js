@@ -1,9 +1,9 @@
-export  const createQuestions = (data) => {
+export  const createQuestions = (data, id) => {
 	return `
       <div class="question-list-item">
             <div class="col-6">
                 <h2>
-                    <a class="text-primary" href="question_answers.html">
+                    <a class="text-primary" href="question_answers.html?id=${data.question_id}">
                         ${data.title}
                     </a>
                 </h2>                

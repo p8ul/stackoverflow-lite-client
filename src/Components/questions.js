@@ -12,10 +12,11 @@ if (isLoggedIn()) {
 let parentNode = document.getElementById('questions_list');
 
 const processQuestionList = data => {
+	document.getElementById('loader').innerHTML = '';
 	data.results.forEach((dataRecord, id) => {
 		let markUp = createQuestions(dataRecord, id);
 		let container = document.createElement('div');
-		container.classList.add('as-Series');
+		container.classList.add('questions__node');
 		container.innerHTML = markUp;
 		parentNode.appendChild(container);
 	});

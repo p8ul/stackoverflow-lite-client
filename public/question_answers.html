@@ -120,9 +120,13 @@
                                 <!-- ./answer -->
 
                                 <!-- post answer -->
-                                <div class="mega-text text-primary">Your Answer</div>
-                                <textarea class="comment-box" placeholder="Answer here..."></textarea>
-                                <button class="btn bg-primary btn-round floating pull-right">Add answer</button>
+                                <form name="answer">
+                                    <div class="mega-text text-primary">Your Answer</div>
+                                    <textarea name="answer_body" class="comment-box" placeholder="Answer here..."></textarea>
+                                    <div class="error" id="answer_body_error"></div>
+                                    <button id="answerBtn" class="btn bg-primary btn-round floating pull-right">Add answer</button>
+                                    <a href="login.html" id="answerBtnLogin" class="hidden btn bg-orange btn-round floating text-center">Login to answer</button>
+                                </form>                                
                                 <!-- ./post answer -->
                         </div>
                     </div>

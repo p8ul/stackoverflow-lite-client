@@ -50,20 +50,18 @@ try {
     
 		var isValid = Object.keys(errors).length === 0;
 		if (!isValid) {
-			console.log(isValid);
 			return false;
 		}
 		api
 			.post('auth/login', data)
 			.then(res => res.json())
 			.then(data => {
-				console.log(data.message);
 				if (data.errors) {
-					processListErrors(data.message, 'loginErrors');
+					processListErrors(data.errors, 'loginErrors');
 					return false;
 				}
 				setToken(data.auth_token);
-				// window.location.reload();
+				window.location.reload();
 			});
 	});
 } catch(error) {}

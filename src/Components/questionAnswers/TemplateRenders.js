@@ -9,9 +9,9 @@ let headerNode = document.getElementById('question_header');
 let answersHeaderNode = document.getElementById('answers_header');
 let answerContentNode = document.getElementById('answer_content');
 
-export const renderAnswerContent = data => {
+export const renderAnswerContent = (data, comments) => {
 	data.forEach((dataRecord) => {
-		let markUp = answerBody(dataRecord);
+		let markUp = answerBody(dataRecord, comments);
 		let container = document.createElement('div');
 		container.innerHTML = markUp;
 		answerContentNode.appendChild(container);
@@ -32,7 +32,7 @@ export const renderQuestionTitle = data => {
 	headerNode.appendChild(container);
 };
 
-export const renderQuestionBody= data => {
+export const renderQuestionBody = data => {
 	let markUp = questionBodyTemplate(data);
 	let container = document.createElement('div');
 	container.classList.add('questions__body');

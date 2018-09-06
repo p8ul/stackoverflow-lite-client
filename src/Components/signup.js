@@ -64,7 +64,8 @@ try {
 			.post('auth/signup', data)
 			.then(res => res.json())
 			.then(data => {
-				if (data.status === 'fail') {
+				console.log(data)
+				if (data.errors) {
 					processObjectErrors(data.errors, 'signupErrors');
 					return false;
 				}

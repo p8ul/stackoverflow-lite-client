@@ -4,6 +4,13 @@
 .text-bold {
     font-weight: bold;
 }
+.text-mute {
+    margin-top: 1px;
+    margin-bottom: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    color: #6a737c !important;
+}
 .hidden {
     display: none !important;
 }

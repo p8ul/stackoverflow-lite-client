@@ -57,12 +57,13 @@ try {
 			.post('auth/login', data)
 			.then(res => res.json())
 			.then(data => {
-				if (data.status === 'fail') {
+				console.log(data.message);
+				if (data.errors) {
 					processListErrors(data.message, 'loginErrors');
 					return false;
 				}
 				setToken(data.auth_token);
-				window.location.reload();
+				// window.location.reload();
 			});
 	});
 } catch(error) {}

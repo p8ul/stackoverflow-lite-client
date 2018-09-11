@@ -3,7 +3,7 @@ export const answerBody = (data, comments) => {
     <div class="answer__item">
         <div class="answer__item_vote pull-left">
             <div class="arrow-up"></div>
-            <div class="text-center text-bold">${parseInt(data.upvotes) - parseInt(data.downvotes)}</div>
+            <div class="text-center answer__item_vote__count text-bold">${parseInt(data.upvotes) - parseInt(data.downvotes)}</div>
             <div class="arrow-down"></div>
         </div>
         <!-- answer body -->
@@ -30,7 +30,7 @@ export const answerBody = (data, comments) => {
                 
                 <span class="text-grey">Add a comment</span>
                 <textarea id="commentBody${data.answer_id}" class="comment${data.answer_id} comment-box" placeholder="Comment here..."></textarea>
-                <button data-id="${data.answer_id}" class="commentBtn cursor-pointer pull-right bg-orange">Send comment</button>
+                <button data-id="${data.answer_id}" id="commentBtn${data.answer_id}" class="hidden commentBtn cursor-pointer pull-right bg-orange">Send comment</button>
         </div>
 </div>  
     `;

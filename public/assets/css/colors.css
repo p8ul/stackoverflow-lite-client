@@ -6,6 +6,10 @@
     background-color: rebeccapurple;
     color: #FFFFFF;
 }
+.bg-red {
+    background-color: red;
+    color: #FFFFFF;
+}
 .bg-white {
     background-color: white;
     color: black

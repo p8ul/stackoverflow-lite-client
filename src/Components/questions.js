@@ -1,13 +1,8 @@
 import api from '../utils/api';
-import { isLoggedIn, logOut } from '../store';
+import { resetQuestionDom } from '../utils';
 import { createQuestions } from '../Templates';
 
-if (isLoggedIn()) {
-	document.getElementById('login-link').classList.add('hidden');
-	document.getElementById('logout-link').classList.remove('hidden');
-	// reset token onclick listener
-	logOut();
-}
+resetQuestionDom(); 
 
 let parentNode = document.getElementById('questions_list');
 

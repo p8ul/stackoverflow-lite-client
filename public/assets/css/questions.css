@@ -6,6 +6,9 @@
     width: 50px;
 }
 
+.answer__item_vote__count {
+    margin-right: 9px;
+}
 .answer__item_body {
     width: 80%
 }

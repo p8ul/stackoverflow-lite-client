@@ -50,15 +50,14 @@ try {
     
 		var isValid = Object.keys(errors).length === 0;
 		if (!isValid) {
-			console.log(isValid);
 			return false;
 		}
 		api
 			.post('auth/login', data)
 			.then(res => res.json())
 			.then(data => {
-				if (data.status === 'fail') {
-					processListErrors(data.message, 'loginErrors');
+				if (data.errors) {
+					processListErrors(data.errors, 'loginErrors');
 					return false;
 				}
 				setToken(data.auth_token);

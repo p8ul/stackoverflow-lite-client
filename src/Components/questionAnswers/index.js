@@ -1,33 +1,47 @@
-import api from '../../utils/api';
-import { isLoggedIn, logOut } from '../../store';
-/**
- * Renders
- */
-import {
-	renderAnswerContent, renderAnswerHeader, 
-	renderQuestionBody,
-	renderQuestionTitle
-} from './TemplateRenders';
-if (isLoggedIn()) {
-	document.getElementById('login-link').classList.add('hidden');
-	document.getElementById('logout-link').classList.remove('hidden');
-	// reset token onclick listener
-	logOut();
-}
+import { 
+	$on,
+	removeErrors,
+	resetQuestionAndAnswersDom 
+} from '../../utils';
+import { getQuestion, sendAnswer } from './actions';
+
+resetQuestionAndAnswersDom();
+
+let data = {};
+const setState = (e) => {
+	data[e.target.name] = e.target.value;
+	removeErrors(data);
+};
+
+const answerFormElement = document.forms.answer;
+
+// initialize form data (reset form fields)
+const resetData = () => {
+	Object.values(answerFormElement.elements).map(el => {
+		if (el.name) {
+			data[el.name] = '';
+			el.value = '';
+		}	
+	});
+};
+
+resetData();
 
 let id = window.location.search.substr(1).split('=',2)[1];
+const handleEvents = () => {
+	Object.values(answerFormElement.elements).map(el => {		
+		$on(el, 'keyup',(e)=>{setState(e);});
+		$on(el, 'input',(e)=>{setState(e);});
+	});
+	$on(answerBtn, 'click', e => sendAnswer({
+		event: e,
+		url: `questions/${id}/answers`,
+		data: data,
+		callBackFunc: resetData
+	}));
+};
 
+handleEvents();
 
-api.get(`questions/${id}`)
-	.then(res => res.json())
-	.then(data => data.results)
-	.then(data => {
-		console.log(data.answers);
-		renderQuestionBody(data.question[0]);
-		renderQuestionTitle(data.question[0]);
-		renderAnswerHeader(data.question[0]);
-		renderAnswerContent(data.answers);
-	})
-	.catch(error => console.error(error));
-    
+getQuestion(`questions/${id}`);
 

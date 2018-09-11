@@ -1,23 +1,16 @@
 import api from '../utils/api';
+import { setToken } from '../store';
 import { 
 	formValidator, 
 	removeErrors, 
-	testEmail, 
+	testEmail, resetSignupDom,
 	processObjectErrors, $on
 } from '../utils';
-import { setToken, isLoggedIn, logOut } from '../store';
-
 
 const signup = document.forms.signup;
 let data = {};
 
-if (isLoggedIn()) {
-	document.getElementById('signup-form').innerHTML = 'You are logged in';
-	document.getElementById('login-link').classList.add('hidden');
-	document.getElementById('logout-link').classList.remove('hidden');
-	// reset token on click listener
-	logOut();
-}
+resetSignupDom();
 
 // initialize form data (reset form fields)
 Object.values(signup.elements).map(el => {
@@ -64,7 +57,8 @@ try {
 			.post('auth/signup', data)
 			.then(res => res.json())
 			.then(data => {
-				if (data.status === 'fail') {
+				console.log(data)
+				if (data.errors) {
 					processObjectErrors(data.errors, 'signupErrors');
 					return false;
 				}

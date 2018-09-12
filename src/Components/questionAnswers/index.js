@@ -4,44 +4,49 @@ import {
 	resetQuestionAndAnswersDom 
 } from '../../utils';
 import { getQuestion, sendAnswer } from './actions';
-
-resetQuestionAndAnswersDom();
-
-let data = {};
-const setState = (e) => {
-	data[e.target.name] = e.target.value;
-	removeErrors(data);
-};
-
-const answerFormElement = document.forms.answer;
-
-// initialize form data (reset form fields)
-const resetData = () => {
-	Object.values(answerFormElement.elements).map(el => {
-		if (el.name) {
-			data[el.name] = '';
-			el.value = '';
-		}	
-	});
-};
-
-resetData();
+import { answerFormElement } from './Nodes';
 
 let id = window.location.search.substr(1).split('=',2)[1];
-const handleEvents = () => {
-	Object.values(answerFormElement.elements).map(el => {		
-		$on(el, 'keyup',(e)=>{setState(e);});
-		$on(el, 'input',(e)=>{setState(e);});
-	});
-	$on(answerBtn, 'click', e => sendAnswer({
-		event: e,
-		url: `questions/${id}/answers`,
-		data: data,
-		callBackFunc: resetData
-	}));
-};
 
-handleEvents();
+class QuestionAndAnswers {
+	constructor() {
+		this.state ={
+			data: {},
+			answerFormElement: answerFormElement
+		};
+		resetQuestionAndAnswersDom();
+		getQuestion(`questions/${id}`);
+		this.handleSubmitAnswerEvents();
+		this.resetData();
+	}
 
-getQuestion(`questions/${id}`);
+	setState(e) {
+		this.state.data[e.target.name] = e.target.value;
+		removeErrors(this.state.data);
+	}
 
+	resetData () {
+		Object.values(this.state.answerFormElement.elements).map(el => {
+			if (el.name) {
+				this.state.data[el.name] = '';
+				el.value = '';
+			}	
+		});
+	}
+
+	handleSubmitAnswerEvents() {
+		Object.values(answerFormElement.elements).map(el => {		
+			$on(el, 'keyup',(e)=>{this.setState(e);});
+			$on(el, 'input',(e)=>{this.setState(e);});
+		});
+		$on(answerBtn, 'click', e => sendAnswer({
+			event: e,
+			url: `questions/${id}/answers`,
+			data: this.state.data,
+			callBackFunc: this.resetData
+		}));
+	}
+}
+
+const index = new QuestionAndAnswers();
+export default index;

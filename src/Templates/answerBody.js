@@ -2,9 +2,9 @@ export const answerBody = (data, comments) => {
 	return `
     <div class="answer__item">
         <div class="answer__item_vote pull-left">
-            <div class="arrow-up"></div>
+            <div class="cursor-pointer arrow-up" id="upvote${data.answer_id}" data-id="${data.answer_id}"></div>
             <div class="text-center answer__item_vote__count text-bold">${parseInt(data.upvotes) - parseInt(data.downvotes)}</div>
-            <div class="arrow-down"></div>
+            <div class="cursor-pointer arrow-down" id="downvote${data.answer_id}" data-id="${data.answer_id}"></div>
         </div>
         <!-- answer body -->
         <div class="answer__item_body pull-left">

@@ -29,7 +29,7 @@ export const HandleVotesEvents = () => {
 /**
  * Get answer id and comment text then call post comment function.
  *
- * @param {!string} el Html Element clicked (up or down arrow )
+ * @param {Element|Window} el Target Element
  */
 const sendComment = (el) => {
 	let id = el.getAttribute('data-id');
@@ -51,7 +51,7 @@ const sendComment = (el) => {
 /**
  * Get answer upvote/downvote id and call post vote function.
  *
- * @param {!string} el Html Element clicked (up or down arrow )
+ * @param {Element|Window} el Target Element
  * @param {!boolean} value true to upvote / false to downvote
  */
 const sendVote = (el, value) => {
@@ -66,7 +66,7 @@ const sendVote = (el, value) => {
 /**
  * Toggle comment button
  *
- * @param {!string} el Html Element clicked (up or down arrow )
+ *  @param {Element|Window} el Target Element
  */
 const showCommentButton = (el) => {
 	let id = el.getAttribute('data-id');

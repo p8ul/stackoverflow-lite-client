@@ -39,3 +39,18 @@ export const resetSignupDom = () => {
 		logOut();
 	}
 };
+
+
+/**
+ * Redirect user if not logged in
+ */
+export const accessController = () => {
+	if (isLoggedIn()) {
+		document.getElementById('login-link').classList.add('hidden');
+		document.getElementById('logout-link').classList.remove('hidden');
+		// reset token onclick listener
+		logOut();
+	} else {
+		window.location.href = '/login.html';
+	}
+};

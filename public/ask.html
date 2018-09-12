@@ -66,7 +66,7 @@
                                 <li>
                                     <div class="form-group mobi-hide">
                                         <img class="icon input-icon fadeIn" src="./assets/img/loupe.svg" />
-                                        <input class="input-control stretchRight input-icon-group" type='text' placeholder="Search..">
+                                        <input id="search" class="input-control stretchRight input-icon-group" type='text' placeholder="Search..">
                                     </div>
                                 </li>
                             </ul>
@@ -102,43 +102,46 @@
                <div class="container">
                    <div class="col-6">
                         <div class="panel bg-white">
-                            <div class="panel__heading" >
-                                <div class="mega-text hatch text-primary">
-                                        Ask a question
-                                </div>                                                        
-                            </div>
-                            <div class="panel__body m-20">
-                                <!-- question -->
-                                <form class="form-ask" name="ask">
-                                    <div class="error" id="server_errors"></div>
-                                    <div class="">
-                                        <label>Title</label>
-                                        <input 
-                                        class="stretchRight input-control" 
-                                        type='text'
-                                        name="title" 
-                                        placeholder="What's your programming question? Be specific">
-                                        <div class="error" id="title_error"></div>
-                                    </div>
+                            <h1 class="mega-text floating fade" id="loader"></h1>
+                            <div id="questions_list">
+                                <div class="panel__heading" >
+                                    <div class="mega-text hatch text-primary">
+                                            Ask a question
+                                    </div>                                                        
+                                </div>
+                                <div class="panel__body m-20">
+                                    <!-- question -->
+                                    <form class="form-ask" name="ask">
+                                        <div class="error" id="server_errors"></div>
+                                        <div class="">
+                                            <label>Title</label>
+                                            <input 
+                                            class="stretchRight input-control" 
+                                            type='text'
+                                            name="title" 
+                                            placeholder="What's your programming question? Be specific">
+                                            <div class="error" id="title_error"></div>
+                                        </div>
 
-                                    <div class="">
-                                        <label>Body</label>
-                                        <textarea 
-                                        name="body"
-                                        class="stretchRight input-control" 
-                                        placeholder="Please enter question body here...">
-                                        </textarea>
-                                        <div class="error" id="body_error"></div>                                        
-                                    </div>
-                                   
-                                    <div class="">
-                                        <button id="askBtn" class="floating pull-left btn btn-primary bg-orange p-15 btn-block">
-                                            Post Your Question
-                                        </button>
-                                    </div> 
-                            </form>
-                            <!-- ./question -->
+                                        <div class="">
+                                            <label>Body</label>
+                                            <textarea 
+                                            name="body"
+                                            class="stretchRight input-control" 
+                                            placeholder="Please enter question body here...">
+                                            </textarea>
+                                            <div class="error" id="body_error"></div>                                        
+                                        </div>
                                     
+                                        <div class="">
+                                            <button id="askBtn" class="floating pull-left btn btn-primary bg-orange p-15 btn-block">
+                                                Post Your Question
+                                            </button>
+                                        </div> 
+                                </form>
+                                <!-- ./question -->
+                                        
+                                </div>
                             </div>
                         </div>
                    </div> 

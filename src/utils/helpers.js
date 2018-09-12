@@ -1,6 +1,13 @@
 import api from './api';
 import { getToken } from '../store';
 
+/**
+ * addEventListener wrapper
+ *
+ * @param {Element|Window} target Target Element
+ * @param {string} type Event name to bind to
+ * @param {Function} callback Event callback
+ */
 export const $on = (target, type, callback) => {
 	target.addEventListener(type, callback);
 };
@@ -24,7 +31,7 @@ export const postAndRedirect = ({url, data}) => {
 /**
  * Toggle an element innerHtml content.
  *
- * @param {!string} el Html Element clicked (up or down arrow )
+ * @param {Element|Window} target Target Element
  * @param {!string} oldText Current element innerHtml content
  * @param {!string} newText new innerHtml Content
  */
@@ -37,11 +44,4 @@ export const toggleInnerText = (el, oldText, newText) => {
 		el.classList.remove('bg-red');
 		el.classList.remove('stretchLeft');
 	}, 2000);
-};
-
-export const changeInnerText = (el, newText) => {
-	el.innerText = newText;
-	el.classList.add('bg-red');
-	el.classList.add('stretchLeft');
-	return el;
 };

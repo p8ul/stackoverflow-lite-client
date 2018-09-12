@@ -3,7 +3,7 @@ export const answerBody = (data, comments) => {
     <div class="answer__item">
         <div class="answer__item_vote pull-left">
             <div class="cursor-pointer arrow-up" id="upvote${data.answer_id}" data-id="${data.answer_id}"></div>
-            <div class="text-center answer__item_vote__count text-bold">${parseInt(data.upvotes) - parseInt(data.downvotes)}</div>
+            <div class="fade text-center answer__item_vote__count text-bold">${parseInt(data.upvotes) - parseInt(data.downvotes)}</div>
             <div class="cursor-pointer arrow-down" id="downvote${data.answer_id}" data-id="${data.answer_id}"></div>
         </div>
         <!-- answer body -->

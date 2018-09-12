@@ -7,7 +7,7 @@ module.exports = {
 		answers: './src/Components/questionAnswers',
 		signup: './src/Components/signup.js',
 		login: './src/Components/login.js',
-		questions: './src/Components/questions.js'
+		questions: './src/Components/questions'
 	},
 	output: {
 		path: path.resolve(__dirname, 'public/dist'),

@@ -66,7 +66,7 @@
                                 <li>
                                     <div class="form-group  mobi-hide">
                                         <img class="icon input-icon fadeIn" src="./assets/img/loupe.svg" />
-                                        <input class="input-control input-icon-group" type='text' placeholder="Search..">
+                                        <input id="search" class="input-control input-icon-group" type='text' placeholder="Search..">
                                     </div>
                                 </li>
                             </ul>
@@ -100,25 +100,28 @@
             <div class="clearfix"></div>
             <div class="main-wrapper">
                <div class="container">
+                      
                     <div class="panel bg-white">
-                        <div class="panel__heading bb" >
-                            <div id="question_header"></div>                                                 
-                        </div>
-                        <div class="panel__body m-35">
-                            <!-- question -->
-                            <div id='questions_body'></div>                            
-                            <!-- ./question -->
-                            <div class="clearfix bb"></div>
-                            
-                             <!-- Answers -->
-                             <div class="question-list-item">
+                        <h1 class="mega-text floating fade" id="loader"></h1>
+                        <div class="question_wrapper" id="questions_list">
+                            <div class="panel__heading bb" >
+                                <div id="question_header"></div>                                                 
+                            </div>
+                            <div class="panel__body m-35">
+                                <!-- question -->
+                                <div id='questions_body'></div>                            
+                                <!-- ./question -->
+                                <div class="clearfix bb"></div>
+                                    
+                                <!-- Answers -->
+                                <div class="question-list-item">
                                     <div id='answers_header'></div>                                    
                                 </div>
                                 <div class="clearfix bb"></div>
                                 <!-- answer -->
                                 <div id="answer_content"></div>
                                 <!-- ./answer -->
-
+            
                                 <!-- post answer -->
                                 <form name="answer">
                                     <div class="mega-text text-primary">Your Answer</div>
@@ -128,7 +131,8 @@
                                     <a href="login.html" id="answerBtnLogin" class="hidden btn bg-orange btn-round floating text-center">Login to answer</button>
                                 </form>                                
                                 <!-- ./post answer -->
-                        </div>
+                            </div>
+                        </div> 
                     </div>
                </div>
             </div>

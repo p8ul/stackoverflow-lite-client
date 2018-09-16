@@ -68,7 +68,7 @@ export const sendAnswer = ({event, url, data, callBackFunc}) => {
 				processListErrors(data.message, 'loginErrors');
 				return false;
 			}
-			callBackFunc();
+			// callBackFunc();
 			window.location.reload();
 		});
 };

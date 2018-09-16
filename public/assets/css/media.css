@@ -50,6 +50,9 @@
         margin-left: 0px;
         margin-right: 0px;
     }
+    .statistics__card {
+        width: 42%;
+    }
 }
  
 @media all and (min-width: 480px) and (max-width: 768px) { 
@@ -78,11 +81,18 @@
         padding-top: 11px;
         padding-bottom: 4px !important;
     }
+    .statistics__card {
+        width: 84%;
+    }
 }
  
 @media all and (max-width: 480px) {
     .logo, .mobi-hide {
         display: none;
+    }
+
+    .statistics__card {
+        width: 84%;
     }
 
     .col-6, .col-10, .col-2, .col-4 {

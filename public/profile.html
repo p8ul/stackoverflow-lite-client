@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile - Stackoverflow lite</title>
-    <link rel="stylesheet" href="./css/styles.css">    
+    <link rel="stylesheet" href="./assets/css/styles.css">    
 </head>
 <body>
     <div class="main">
@@ -75,14 +75,15 @@
                             <ul class="nav">
                                 <li>
                                     <a href="index.html">Home</a>
+                                </li>                                
+                                <li>
+                                    <a href="login.html" id="login-link" class="text-white floating btn btn-round mt--5 bg-orange">
+                                        Login
+                                    </a>                                
                                 </li>
                                 <li>
-                                    <a href="#" class="floating">Try Premium account</a>
-                                </li>
-                                
-                                <li>                                
-                                    <a href="index.html" class="btn btn-round mt--5 bg-orange">
-                                        Log out
+                                    <a href="#" id="logout-link" class="text-white hidden floating btn btn-round mt--5 bg-orange">
+                                        Logout
                                     </a>                                
                                 </li>
                             </ul>
@@ -102,10 +103,10 @@
                                 <div class="statistics__card shadow-primary bg-dark-blue">
                                     <div class="statistics__card__title pull-left">
                                         All Questions
+                                        <div class="statistics__card__value mt-15" id="all-questions">--</div>
                                     </div>
                                     <img class="statistics__card__icon pull-right hatch" src="assets/img/question-mark.svg" />
-                                    <div class=""></div>
-                                    <div class="statistics__card__value">89</div>
+                                    <div class=""></div>                                   
                                 </div>
                             </div>
                             <!-- ./ statistics -->
@@ -115,10 +116,11 @@
                                     <div class="statistics__card shadow-primary bg-white">
                                         <div class="statistics__card__title pull-left">
                                             All Answers
+                                            <div class="statistics__card__value mt-15" id="all-answers">--</div>
                                         </div>
                                         <img class="statistics__card__icon pull-right hatch" src="assets/img/checklist-on-a-paper-with-a-pencil.svg" />
                                         <div class=""></div>
-                                        <div class="statistics__card__value">89</div>
+                                        
                                     </div>
                             </div>
                             <!-- ./ statistics -->
@@ -128,10 +130,10 @@
                                     <div class="statistics__card shadow-primary bg-light-blue">
                                         <div class="statistics__card__title pull-left">
                                             All Votes
+                                            <div class="statistics__card__value mt-15" id="all-votes">--</div>
                                         </div>
                                         <img class="hatch statistics__card__icon pull-right" src="assets/img/thumbs-up.svg" />
-                                        <div class=""></div>
-                                        <div class="statistics__card__value">109</div>
+                                        
                                     </div>
                             </div>
                             <!-- ./ statistics -->
@@ -153,31 +155,11 @@
                                             <th>Answers</th>
                                             <th>Question</th>
                                             <th>Date</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="table__tag">8</div>
-                                            </td>
-                                            <td>
-                                                How do you implement a Stack and a Queue in JavaScript?
-                                            </td>
-                                            <td>
-                                                1/12/2017
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="table__tag">7</div>
-                                            </td>
-                                            <td>
-                                                How do you implement a Stack and a Queue in JavaScript?
-                                            </td>
-                                            <td>
-                                                1/2/2018
-                                            </td>
-                                        </tr>
+                                    <tbody id="popular-questions">
+                                        
                                     </tbody>
                                 </table>                                    
                             </div>
@@ -240,5 +222,6 @@
     </div>
 </body>
 
-<script src="./js/main.js"></script>
+<script src="./assets/js/main.js"></script>
+<script src="./dist/profile.bundle.js"></script>
 </html>

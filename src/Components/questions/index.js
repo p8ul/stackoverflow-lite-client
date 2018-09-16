@@ -1,12 +1,13 @@
 import { resetQuestionDom } from '../../utils';
 import { searchEventListener } from './Events';
 import { searchQuestions } from './actions';
-import { processQuestionList } from './TemplateRenders';
+import { renderQuestionList, renderLoader } from './TemplateRenders';
 
 export default class Questions {
 	constructor() {
 		resetQuestionDom();
-		let callBackFnc = processQuestionList; 
+		let callBackFnc = renderQuestionList; 
+		renderLoader();
 		searchQuestions({query: '', callBackFnc});
 		searchEventListener();
 	}

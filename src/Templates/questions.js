@@ -14,13 +14,20 @@ export  const createQuestions = (data, id) => {
             <table class="text-center stats-box">
                 <tr>
                     <td>
+                        ${data.votes_count}
+                    </td>
+                    <td>
                         ${data.answers_count}
                     </td>
                 </tr>
                 <tr>
+                    <td>Votes</td>
                     <td>Answers</td>
                 </tr>
                 <tr>
+                    <td>
+                        <img class="icon hatch floating vote_thumb" src="./assets/img/thumbs-up.svg" />
+                    </td>
                     <td>
                         <img class="icon fadeIn" src="./assets/img/se.png" />
                     </td>

@@ -42,7 +42,7 @@ export const resetSignupDom = () => {
 
 
 /**
- * Redirect user if not logged in
+ * Redirect to login page user if not logged in
  */
 export const accessController = () => {
 	if (isLoggedIn()) {

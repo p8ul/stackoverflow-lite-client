@@ -4,34 +4,26 @@ import {
 	answerHeader, answerBody 
 } from '../../Templates';
 import * as Node from './Nodes';
+import { render } from '../../utils';
 
 export const renderAnswerContent = (data, comments) => {
 	data.forEach((dataRecord) => {
 		let markUp = answerBody(dataRecord, comments);
-		let container = document.createElement('div');
-		container.innerHTML = markUp;
-		Node.answerContentNode.appendChild(container);
+		render('div', markUp, Node.answerContentNode);
 	});
 };
 
 export const renderAnswerHeader = data => {
 	let markUp = answerHeader(data);
-	let container = document.createElement('div');
-	container.innerHTML = markUp;
-	Node.answersHeaderNode.appendChild(container);
+	render('div', markUp, Node.answersHeaderNode);
 };
 
 export const renderQuestionTitle = data => {
 	let markUp = questionTitle(data);	
-	let container = document.createElement('div');
-	container.innerHTML = markUp;
-	Node.headerNode.appendChild(container);
+	render('div', markUp, Node.headerNode);
 };
 
 export const renderQuestionBody = data => {
 	let markUp = questionBodyTemplate(data);
-	let container = document.createElement('div');
-	container.classList.add('questions__body');
-	container.innerHTML = markUp;
-	Node.parentNode.appendChild(container);
+	render('div', markUp, Node.parentNode);
 };

@@ -1,0 +1,1 @@
+export const askElement = document.forms.ask;

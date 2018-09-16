@@ -5,9 +5,10 @@ module.exports = {
 	entry: {
 		askquestion: './src/Components/ask',
 		answers: './src/Components/questionAnswers',
-		signup: './src/Components/signup.js',
-		login: './src/Components/login.js',
-		questions: './src/Components/questions.js'
+		signup: './src/Components/signup',
+		login: './src/Components/login',
+		questions: './src/Components/questions',
+		profile: './src/Components/profile'
 	},
 	output: {
 		path: path.resolve(__dirname, 'public/dist'),

@@ -13,6 +13,17 @@ class Api {
 			}
 		});
 	}
+
+	delete(endPoint, data, jwtToken = null) {
+		return fetch(`${this.baseUrl}${endPoint}`, {
+			method: 'DELETE',
+			body: JSON.stringify(data),
+			headers: {
+				Authorization: `JWT ${jwtToken}`,
+				'content-type': 'application/json'
+			}
+		});
+	}
   
 	get(endPoint, jwtToken) {
 		return fetch(`${this.baseUrl}${endPoint}`, {

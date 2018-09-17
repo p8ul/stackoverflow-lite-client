@@ -1,5 +1,8 @@
 import api from './api';
 import { getToken } from '../store';
+import { render } from './render';
+import { successTemplate } from '../Templates';
+import { popupContent, popupNode } from './Nodes';
 
 /**
  * addEventListener wrapper
@@ -44,4 +47,18 @@ export const toggleInnerText = (el, oldText, newText) => {
 		el.classList.remove('bg-red');
 		el.classList.remove('stretchLeft');
 	}, 2000);
+};
+
+export const toggleElement = (el) => {
+	if (el.classList.contains('hidden')) {
+		el.classList.remove('hidden');
+		return;
+	}
+	el.classList.add('hidden');
+};
+
+export const popUp = (message) => {
+	popupContent.innerHTML = '';
+	render('div', successTemplate(message), popupContent);
+	setTimeout(() => toggleElement(popupNode), 4000);
 };

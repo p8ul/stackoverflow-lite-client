@@ -12,7 +12,7 @@ export const popularQuestions = (data) => {
         </td>
         <td>
         <img class="table__td__img pull-right hatch" src="assets/img/clipboards.svg" />
-        <img class="table__td__img pull-right hatch" src="assets/img/unlocked.svg" />
+        <img title="Delete question" class="table__td__img cursor-pointer pull-right hatch delete" data-id="${data.question_id}" src="assets/img/trash.svg" />
         </td>
     </tr>
     `);

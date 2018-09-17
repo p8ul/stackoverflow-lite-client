@@ -37,6 +37,9 @@
 .text-primary {
     color: rebeccapurple !important;
 }
+.text-success {
+    color: green !important;
+}
 
 .text-grey {
     color: grey !important;

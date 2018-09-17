@@ -1,23 +1,32 @@
 import api from '../../utils/api';
 import { getToken } from '../../store';
 import { renderPopularQuestions } from './TemplateRenders';
-import { answersNode, questionsNode, votesNode } from './Nodes';
+import { 
+	answersNode, questionsNode,
+	votesNode } from './Nodes';
+import { HandleDeleleEvents } from './Events';
+import { popUp } from '../../utils';
+
 /**
  * Fetch all users questions from the server,
  * Render templates based on result data
- * @param {!string} url url endpoint
  */
-export const getQuestions = () => {
+export const getQuestions = () => {	
 	api.get('users/questions', getToken())
 		.then(res => res.json())
 		.then(data => data.results)
 		.then(data => {
 			renderPopularQuestions(data.question);
+			setTimeout(HandleDeleleEvents, 2000);
 			// renderQuestionTable(data.question[0]);
 		})
 		.catch(error => console.error(error));
 };
 
+/**
+ * Fetch users statistics from the server,
+ * Render templates based on result data
+ */
 export const getUserStats = () => {
 	api.get('users/stats', getToken())
 		.then(res => res.json())
@@ -27,9 +36,21 @@ export const getUserStats = () => {
 			answersNode.innerHTML = data.answers;
 			votesNode.innerHTML = data.votes;
 			questionsNode.innerHTML = data.questions;
-			console.log(data.answers)
-			// renderPopularQuestions(data.question);
-			// renderQuestionTable(data.question[0]);
 		})
 		.catch(error => console.error(error));
 };
+
+/**
+ * Delete a questions
+ * @param {!id} id questions id
+ */
+export const deleteQuestion = (id) => {
+	api.delete(`questions/${id}`, {}, getToken())
+		.then(res => res.json())
+		.then(data => {
+			popUp(data.message);
+			setTimeout(()=> window.location.reload(),5000);
+		})
+		.catch(error => console.error(error));
+};
+

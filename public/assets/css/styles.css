@@ -12,6 +12,7 @@
 @import 'navbar.css';
 @import 'sidebar.css';
 @import 'loaders.css';
+@import 'popup.css';
 
 /** general styles */
 body {

@@ -1,11 +1,22 @@
 class Api {
 	constructor() {
-		this.baseUrl = 'http://localhost:5000/api/v1/';
+		this.baseUrl = 'https://stackoverflow-paul.herokuapp.com/api/v1/';
 	}
 
 	post(endPoint, data, jwtToken = null) {
 		return fetch(`${this.baseUrl}${endPoint}`, {
 			method: 'POST',
+			body: JSON.stringify(data),
+			headers: {
+				Authorization: `JWT ${jwtToken}`,
+				'content-type': 'application/json'
+			}
+		});
+	}
+
+	delete(endPoint, data, jwtToken = null) {
+		return fetch(`${this.baseUrl}${endPoint}`, {
+			method: 'DELETE',
 			body: JSON.stringify(data),
 			headers: {
 				Authorization: `JWT ${jwtToken}`,

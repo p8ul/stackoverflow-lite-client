@@ -7,3 +7,5 @@ export * from './error';
 export * from './popularQuestions';
 export * from './loader';
 export * from './loaderSmall';
+export * from './confirmAction';
+export * from './success';

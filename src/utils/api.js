@@ -1,6 +1,6 @@
 class Api {
 	constructor() {
-		this.baseUrl = 'http://localhost:5000/api/v1/';
+		this.baseUrl = 'https://stackoverflow-paul.herokuapp.com/api/v1/';
 	}
 
 	post(endPoint, data, jwtToken = null) {

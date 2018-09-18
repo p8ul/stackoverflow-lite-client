@@ -45,6 +45,12 @@
     margin-bottom: 23px;
 }
 
+.dismiss-btn {
+    float: right;
+    padding: 8px;
+    font-weight: bold;
+}
+
 .statistics__card__icon {
     height: 69px;
     margin-top: 14px;

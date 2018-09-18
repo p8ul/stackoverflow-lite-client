@@ -1,5 +1,5 @@
 import api from '../../utils/api';
-import { getToken } from '../../store';
+import { getToken, questions } from '../../store';
 import { renderPopularQuestions } from './TemplateRenders';
 import { 
 	answersNode, questionsNode,
@@ -15,9 +15,10 @@ export const getQuestions = () => {
 	api.get('users/questions', getToken())
 		.then(res => res.json())
 		.then(data => data.results)
-		.then(data => {
-			renderPopularQuestions(data.question);
+		.then(data => {			
+			questions({type: 'SET', payload: data.question});
 			setTimeout(HandleDeleleEvents, 2000);
+			renderPopularQuestions(questions().questions);
 			// renderQuestionTable(data.question[0]);
 		})
 		.catch(error => console.error(error));
@@ -27,7 +28,7 @@ export const getQuestions = () => {
  * Fetch users statistics from the server,
  * Render templates based on result data
  */
-export const getUserStats = () => {
+export const getUserStats = () => {	
 	api.get('users/stats', getToken())
 		.then(res => res.json())
 		.then(data => data.results)

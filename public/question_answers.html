@@ -13,7 +13,7 @@
         <div class="sidebar  mobi-hide col-3 navbar-primary full-height">
             <!-- logo -->
             <div>
-                <a href="#">
+                <a href="index.html">
                     <img class="fadeIn sidebar__logo-backend" src="./assets/img/logo.png" alt="logo">
                 </a>
             </div>
@@ -27,22 +27,10 @@
                         </a>                        
                     </li>
                     <li class="">
-                        <a>
-                            <img class="icon" src="./assets/img/price-tag.svg" />
-                            <span class="sidebar-items__text">Tags</span>
-                        </a>                        
-                    </li>
-                    <li class="">
                         <a href="ask.html">
                             <img class="icon" src="./assets/img/thumbs-up.svg" />                            
                             <span class="sidebar-items__text">Ask Question</span>
                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <img class="icon" src="./assets/img/megaphone.svg" />
-                            <span class="sidebar-items__text">Badges</span>
-                        </a>
                     </li>
                     <li>
                         <a href="profile.html">
@@ -58,41 +46,44 @@
             <!-- navbar -->
             <div class="navbar bg-white navbar-primary p-0 navbar-fixed-top">
                     <div class="container">
-                        <div class="pull-left">
-                            <ul class="nav text-center">
-                                <li>
-                                    <img class="icon" src="./assets/img/list.svg" />                                        
-                                </li>
-                                <li>
-                                    <div class="form-group  mobi-hide">
-                                        <img class="icon input-icon fadeIn" src="./assets/img/loupe.svg" />
-                                        <input id="search" class="input-control input-icon-group" type='text' placeholder="Search..">
-                                    </div>
-                                </li>
-                            </ul>
+                            <div class="pull-left mobi-hide">
+                                <ul class="nav text-center">
+                                    <li>
+                                        <div class="form-group mobi-hide">
+                                            <img class="icon input-icon fadeIn" src="./assets/img/loupe.svg" />
+                                            <input id="search" class="input-control stretchRight input-icon-group" type='text' placeholder="Search..">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pull-right">
+                                <ul class="nav">
+                                    <li class="md-hide">
+                                        <a href="index.html">Home</a>
+                                    </li>
+                                    <li class="md-hide">
+                                        <a href="ask.html">Ask</a>
+                                    </li>
+                                    <li class="md-hide">
+                                        <a href="questions.html">Questions</a>
+                                    </li>
+                                    <li class="md-hide">
+                                        <a href="profile.html">Profile</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="login.html" id="login-link" class="text-white floating btn btn-round mt--5 bg-orange">
+                                            Login
+                                        </a>                                
+                                    </li>
+                                    <li>
+                                        <a href="#" id="logout-link" class="text-white hidden floating btn btn-round mt--5 bg-orange">
+                                            Logout
+                                        </a>                                
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="pull-right">
-                            <ul class="nav">
-                                <li>
-                                    <a href="index.html">Home</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="floating">Try Premium account</a>
-                                </li>
-                                
-                                <li>
-                                    <a href="login.html" id="login-link" class="text-white floating btn btn-round mt--5 bg-orange">
-                                        Login
-                                    </a>                                
-                                </li>
-                                <li>
-                                    <a href="#" id="logout-link" class="text-white hidden floating btn btn-round mt--5 bg-orange">
-                                        Logout
-                                    </a>                                
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             <!-- ./navbar -->
             

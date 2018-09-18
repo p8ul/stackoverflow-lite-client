@@ -12,9 +12,9 @@ import { loaderSmall } from '../../Templates';
  *
  * @param {!Event} event form submit request
  * @param {!string} url post answer api endpoint
- * @param {!function} callBackFunc call back function to call after successful request
+ * @param {!string} method fetch api method (post, put)
  */
-export const sendQuestion = ({event, url, data, callBackFunc}) => {
+export const sendQuestion = ({event, url, data, method='POST'}) => {
 	event.preventDefault();
 	
 	let errors = formValidator(data);		
@@ -25,7 +25,7 @@ export const sendQuestion = ({event, url, data, callBackFunc}) => {
 	askBtn.innerText = '';
 	render('div', loaderSmall(), askBtn);
 	api
-		.post(url, data, getToken())
+		.post(url, data, getToken(), method)
 		.then(res => res.json())
 		.then(data => {
 			askBtn.innerText = 'Post a question';
@@ -38,3 +38,4 @@ export const sendQuestion = ({event, url, data, callBackFunc}) => {
 			callBackFunc();
 		});
 };
+

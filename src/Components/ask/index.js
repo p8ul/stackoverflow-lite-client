@@ -43,7 +43,7 @@ export default class Ask {
 			event: e,
 			url: 'questions/',
 			data: this.state.data,
-			callBackFunc: ()=>{console.log(object);}
+			method: 'POST'
 		}));
 	}
 }

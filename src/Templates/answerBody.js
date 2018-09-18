@@ -1,3 +1,5 @@
+import { dateFormatter } from '../utils';
+
 export const answerBody = (data, comments) => {
 	return `
     <div class="answer__item">
@@ -8,11 +10,12 @@ export const answerBody = (data, comments) => {
         </div>
         <!-- answer body -->
         <div class="answer__item_body pull-left">
-            <p>
+            <div>
                 <p>
                     ${data.answer_body}
                 </p>
-            </p>
+            </div>
+            <div class="text-mute">Answered ${dateFormatter(data.date)}<br/> <span class="text-primary"> by ${data.username}</span></div>
         </div>
         <!-- ./body -->
         <div class="question__comments ml-40 mt--5">
@@ -23,7 +26,7 @@ export const answerBody = (data, comments) => {
                 ${comments.map(comment => {if(data.answer_id === comment.answer_id) {
 		return(`
         <p class="">${comment.comment_body}</p>
-        <div class="text-mute">Answerd ${comment.created_at}<br/> <span class="text-primary"> by ${comment.username}</span></div>
+        <div class="text-mute">Answered ${dateFormatter(comment.date)}<br/> <span class="text-primary"> by ${comment.username}</span></div>
         <div class="clearfix bb"></div>
         `);
 	}}).join('')}

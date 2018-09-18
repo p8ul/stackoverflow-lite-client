@@ -37,14 +37,24 @@
    768-480     - tablet 
    480-less    - phone landscape & smaller
 --------------------------------------------*/
+@media all and (min-width: 1280px) and (max-width: 1480px) {
+    .md-hide {
+        display: none !important;
+    }
+ }
 @media all and (min-width: 1024px) and (max-width: 1280px) {
-
+    .md-hide {
+        display: none !important;
+    }
  }
  
 @media all and (min-width: 768px) and (max-width: 1024px) { 
     .wrapper {
         margin-left: 0px !important;
         margin-right: 0px !important;
+    }
+    .md-hide {
+        display: none !important;
     }
     .card-signup {
         margin-left: 0px;
@@ -53,13 +63,22 @@
     .statistics__card {
         width: 42%;
     }
+    .sidebar-items__text {
+        padding: 6px !important;    
+    }
+    .sidebar__logo-backend {
+        width: 153px !important;
+        padding: 9px !important;    
+    }
+    .mega-text {
+        margin: 20px !important;    
+    }
 }
  
 @media all and (min-width: 480px) and (max-width: 768px) { 
     .col-6, .col-10, .col-2, .col-4 {
         width: 100% !important;
     }
-
     .wrapper {
         margin-left: 0px !important;
         margin-right: 0px !important;
@@ -78,7 +97,7 @@
         width: 98% !important;
     }
     .navbar .nav > li > a {
-        padding-top: 11px;
+        padding-top: 11px !important;
         padding-bottom: 4px !important;
     }
     .statistics__card {
@@ -89,6 +108,14 @@
 @media all and (max-width: 480px) {
     .logo, .mobi-hide {
         display: none;
+    }
+    .navbar .nav > li > a {
+        font-size: 11px !important;
+        padding-top: 0px;
+    }
+    
+    .mega-text  {
+        margin: 5px !important;
     }
 
     .statistics__card {

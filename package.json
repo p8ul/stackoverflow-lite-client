@@ -26,8 +26,9 @@
   "author": "p8ul",
   "license": "MIT",
   "dependencies": {
+    "jwt-decode": "^2.2.0",
     "live-server": "^1.2.0",
-    "webpack": "^4.12.0",
-    "jwt-decode": "^2.2.0"
+    "moment": "^2.22.2",
+    "webpack": "^4.12.0"
   }
 }

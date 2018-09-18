@@ -1,3 +1,5 @@
+import { dateFormatter } from '../utils';
+
 export  const questionBodyTemplate = (data) => {
 	return `
     <div class="question-list-item">
@@ -5,7 +7,7 @@ export  const questionBodyTemplate = (data) => {
                 <p>
                     ${data.body}
                 </p>                
-                <h5 class="text-grey">${data.created_at} <span class="text-primary"> by ${data.username}</span></h5>
+                <h5 class="text-grey">${dateFormatter(data.date)} <span class="text-primary"> by ${data.username}</span></h5>
                 
             </div> 
             <!-- right icons  -->

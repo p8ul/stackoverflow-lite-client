@@ -197,3 +197,7 @@ textarea {
 .error:first-letter {
     text-transform:capitalize;
 }
+
+*:focus {
+  outline: 0;
+}

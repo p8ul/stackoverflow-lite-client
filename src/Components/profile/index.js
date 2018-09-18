@@ -1,5 +1,5 @@
 import { 
-	resetQuestionAndAnswersDom
+	resetQuestionAndAnswersDom, accessController
 } from '../../utils';
 import { getQuestions, getUserStats } from './actions';
 import { initializeRender } from './TemplateRenders';
@@ -10,6 +10,7 @@ class Profile {
 		this.state = {
 			data: {}
 		};
+		accessController();
 		initializeRender();
 		resetQuestionAndAnswersDom();
 		getQuestions();

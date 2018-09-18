@@ -13,7 +13,7 @@
         <div class=" mobi-hide sidebar col-3 navbar-primary full-height">
             <!-- logo -->
             <div>
-                <a href="#">
+                <a href="index.html">
                     <img class="fadeIn sidebar__logo-backend" src="./assets/img/logo.png" alt="logo">
                 </a>
             </div>
@@ -26,23 +26,11 @@
                             <span class="sidebar-items__text">Questions</span>
                         </a>                        
                     </li>
-                    <li class="">
-                        <a>
-                            <img class="icon" src="./assets/img/price-tag.svg" />
-                            <span class="sidebar-items__text">Tags</span>
-                        </a>                        
-                    </li>
                     <li class="sidebar-items__nav--active">
                         <a class="active-text" href="ask.html">
                             <img class="icon" src="./assets/img/thumbs-up.svg" />                            
                             <span class="sidebar-items__text">Ask Question</span>
                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <img class="icon" src="./assets/img/megaphone.svg" />
-                            <span class="sidebar-items__text">Badges</span>
-                        </a>
                     </li>
                     <li>
                         <a href="profile.html">
@@ -58,11 +46,8 @@
             <!-- navbar -->
             <div class="navbar bg-white navbar-primary p-0 navbar-fixed-top">
                     <div class="container">
-                        <div class="pull-left">
+                        <div class="pull-left mobi-hide">
                             <ul class="nav text-center">
-                                <li>
-                                    <img class="icon" src="./assets/img/list.svg" />                                        
-                                </li>
                                 <li>
                                     <div class="form-group mobi-hide">
                                         <img class="icon input-icon fadeIn" src="./assets/img/loupe.svg" />
@@ -73,11 +58,17 @@
                         </div>
                         <div class="pull-right">
                             <ul class="nav">
-                                <li>
+                                <li class="md-hide">
                                     <a href="index.html">Home</a>
                                 </li>
-                                <li>
-                                    <a href="#" class="floating">Try Premium account</a>
+                                <li class="md-hide">
+                                    <a href="ask.html">Ask</a>
+                                </li>
+                                <li class="md-hide">
+                                    <a href="questions.html">Questions</a>
+                                </li>
+                                <li class="md-hide">
+                                    <a href="profile.html">Profile</a>
                                 </li>
                                 
                                 <li>
@@ -133,8 +124,8 @@
                                             <div class="error" id="body_error"></div>                                        
                                         </div>
                                     
-                                        <div class="">
-                                            <button id="askBtn" class="floating pull-left btn btn-primary bg-orange p-15 btn-block">
+                                        <div class="text-center">
+                                            <button id="askBtn" class="floating btn btn-primary bg-orange p-15 btn-block">
                                                 Post Your Question
                                             </button>
                                         </div> 

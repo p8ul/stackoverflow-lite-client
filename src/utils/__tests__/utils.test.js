@@ -1,6 +1,7 @@
 import { 
-	testEmail, formValidator, toggleInnerText
-} from '../utils';
+	testEmail, formValidator, toggleInnerText,
+	dateFormatter
+} from '../../utils';
 
 const data = {};
 
@@ -22,4 +23,8 @@ test('Toggle innerHtml of an element', () =>{
 	var newText = 'new inner text';
 	toggleInnerText(el, el.innerText, newText);
 	expect(el.innerText).toEqual(newText);
+});
+
+test('Return time ago from date', () => {
+	expect(dateFormatter()).toEqual('a few seconds ago');
 });

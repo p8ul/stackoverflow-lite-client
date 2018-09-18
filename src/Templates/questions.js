@@ -1,3 +1,5 @@
+import { dateFormatter } from '../utils';
+
 export  const createQuestions = (data, id) => {
 	return `
       <div class="question-list-item fade" data-key="${id}">
@@ -7,7 +9,7 @@ export  const createQuestions = (data, id) => {
                         ${data.title}
                     </a>
                 </h2>                
-                <h5 class="text-grey">${data.created_at} <span class="text-primary"> by ${data.username}</span></h5>
+                <h5 class="text-grey">${dateFormatter(data.date)} <span class="text-primary"> by ${data.username}</span></h5>
             </div> 
         <!-- right icons  -->
         <div class="col-2">

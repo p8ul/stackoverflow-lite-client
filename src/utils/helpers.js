@@ -51,10 +51,17 @@ export const toggleInnerText = (el, oldText, newText) => {
 
 export const toggleElement = (el) => {
 	if (el.classList.contains('hidden')) {
+		el.classList.remove('fadeOut');
 		el.classList.remove('hidden');
+		el.classList.remove('fadeIn');
+		el.classList.add('fadeIn');
 		return;
 	}
-	el.classList.add('hidden');
+	el.classList.remove('fadeOut');
+	el.classList.remove('fadeIn');
+	el.classList.add('fadeOut');
+	setTimeout(()=>el.classList.add('hidden'), 1000);
+	
 };
 
 export const popUp = (message) => {

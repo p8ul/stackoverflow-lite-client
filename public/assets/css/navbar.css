@@ -52,3 +52,8 @@
     border-radius: 3px;
     line-height: 20px;
 }
+
+.nav__link {
+    float: right;
+    margin-top: 6px !important;
+}

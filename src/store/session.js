@@ -1,3 +1,10 @@
+import jwt_decode from 'jwt-decode';
+
+/** Decode token and return user details */
+export const getTokenDetails = () => {
+	var decoded = jwt_decode(getToken());
+	console.log(decoded);
+};
 export const  setToken = (token, key='token') => {
 	localStorage.setItem(key, token);
 };

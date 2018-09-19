@@ -1,6 +1,7 @@
 import { createQuestions, loader, ErrorTemplate } from '../../Templates';
 import { loaderNode, parentNode } from './Nodes';
 import { render } from '../../utils';
+
 export const renderLoader = () => {
 	let markUp = loader();
 	let container = document.createElement('div');

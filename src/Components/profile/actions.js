@@ -1,6 +1,9 @@
 import api from '../../utils/api';
 import { getToken, questions } from '../../store';
-import { renderPopularQuestions } from './TemplateRenders';
+import { 
+	renderPopularQuestions,
+	renderRecentQuestions
+} from './TemplateRenders';
 import { 
 	answersNode, questionsNode,
 	votesNode } from './Nodes';
@@ -15,10 +18,11 @@ export const getQuestions = () => {
 	api.get('users/questions', getToken())
 		.then(res => res.json())
 		.then(data => data.results)
-		.then(data => {			
+		.then(data => {	
 			questions({type: 'SET', payload: data.question});
 			setTimeout(HandleDeleleEvents, 2000);
 			renderPopularQuestions(questions().questions);
+			renderRecentQuestions(data.most_answers);
 			// renderQuestionTable(data.question[0]);
 		})
 		.catch(error => console.error(error));

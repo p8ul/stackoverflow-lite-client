@@ -93,6 +93,10 @@ a {
     padding-bottom: 38px;
 }
 
+.answer__checkbox {
+    margin-left: 6px;
+}
+
 
 textarea {
     margin-top: 10px;
@@ -174,6 +178,16 @@ textarea {
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;    
     border-bottom: 20px solid grey;
+    -webkit-transition: all 150ms ease .02s;
+    -moz-transition: all 150ms ease .02s;
+    -o-transition: all 150ms ease .02s;
+    -ms-transition: all 150ms ease .02s;
+    transition: all 150ms ease .02s;
+}
+
+.arrow-up:hover {   
+    border-bottom: 25px solid rebeccapurple;
+    box-shadow: 1px;
 }
   
 .arrow-down {
@@ -182,6 +196,16 @@ textarea {
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
     border-top: 20px solid grey;
+    -webkit-transition: all 150ms ease .02s;
+    -moz-transition: all 150ms ease .02s;
+    -o-transition: all 150ms ease .02s;
+    -ms-transition: all 150ms ease .02s;
+    transition: all 150ms ease .02s;
+}
+
+.arrow-down:hover {   
+    border-top: 25px solid rebeccapurple;
+    box-shadow: 1px;
 }
 
 .shadow-primary {

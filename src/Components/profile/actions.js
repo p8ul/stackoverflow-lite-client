@@ -19,9 +19,9 @@ export const getQuestions = () => {
 		.then(res => res.json())
 		.then(data => data.results)
 		.then(data => {	
-			questions({type: 'SET', payload: data.question});
+			questions({type: 'SET', payload: data.most_answers});
 			setTimeout(HandleDeleleEvents, 2000);
-			renderPopularQuestions(questions().questions);
+			renderPopularQuestions(data.question);
 			renderRecentQuestions(data.most_answers);
 			// renderQuestionTable(data.question[0]);
 		})

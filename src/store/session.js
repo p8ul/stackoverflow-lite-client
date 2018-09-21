@@ -1,22 +1,42 @@
 import jwt_decode from 'jwt-decode';
+import { TOKEN_KEY } from '../Constants';
 
-/** Decode token and return user details */
-export const getTokenDetails = () => {
-	var decoded = jwt_decode(getToken());
-	console.log(decoded);
+/**
+ *  Decode token and return user details
+ *  @param {!string} key token object key
+ *  */
+export const getTokenDetails = (key=TOKEN_KEY) => {
+	return jwt_decode(getToken(key));	
 };
-export const  setToken = (token, key='token') => {
+
+/**
+ * Store jwt token in localStorage
+ * @param {!string} token jwt token from server
+ * @param {!string} key token object key
+ */
+export const  setToken = (token, key=TOKEN_KEY) => {
 	localStorage.setItem(key, token);
 };
 
-export const getToken = (key='token') => {
+/**
+ * Get token from localstorage
+ * @param {!string} key token object key
+ */
+export const getToken = (key=TOKEN_KEY) => {
 	return localStorage.getItem(key);
 };
 
-export const removeToken = (key='token') => {
+/**
+ * Remove a token from the localstorage
+ * @param {!string} key token object key
+ */
+export const removeToken = (key=TOKEN_KEY) => {
 	localStorage.removeItem(key);
 };
 
+/**
+ * Check if token is set
+ */
 export const isLoggedIn = () => {
 	var token = getToken();
 	if (token === null || token === 'undefined')
@@ -24,9 +44,13 @@ export const isLoggedIn = () => {
 	return true;
 };
 
+/**
+ * Adds a click listener to log out button
+ * Remove token when the button is clicked
+ */
 export const logOut = () => {
 	let el = document.getElementById('logout-link');
-	el.addEventListener('click', e => {
+	el.addEventListener('click', () => {
 		removeToken();
 		window.location.reload();  
 	});	

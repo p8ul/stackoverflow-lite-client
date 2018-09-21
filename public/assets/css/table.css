@@ -30,4 +30,13 @@ td {
 
 .table__td__img {
     height: 22px;
+    -webkit-transition: all 150ms ease .02s;
+    -moz-transition: all 150ms ease .02s;
+    -o-transition: all 150ms ease .02s;
+    -ms-transition: all 150ms ease .02s;
+    transition: all 150ms ease .02s;
+}
+
+.table__td__img:hover {
+    height: 24px;
 }

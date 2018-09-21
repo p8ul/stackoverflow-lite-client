@@ -1,7 +1,7 @@
 class Api {
 	constructor() {
-		// this.baseUrl = 'http://127.0.0.1:5000/api/v1/';
-		this.baseUrl = 'https://stackoverflow-paul.herokuapp.com/api/v1/';
+		this.baseUrl = 'http://127.0.0.1:5000/api/v1/';
+		// this.baseUrl = 'https://stackoverflow-paul.herokuapp.com/api/v1/';
 	}
 
 	post(endPoint, data, jwtToken = null, method='POST') {
@@ -37,5 +37,5 @@ class Api {
 	}
 }
 
-const api = new Api();
+export const api = new Api();
 export default api;

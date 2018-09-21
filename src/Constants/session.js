@@ -1,0 +1,1 @@
+export const TOKEN_KEY = 'stackoverflow__lite_token_key';

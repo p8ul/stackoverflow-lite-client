@@ -5,7 +5,6 @@ import { TOKEN_KEY } from '../Constants';
  * Only a question author can accept an answer
  */
 export const canAcceptAnswer = (username, key=TOKEN_KEY) => {
-	console.error(getTokenDetails(key).username, username)
 	try {
 		if (getTokenDetails(key).username === username) {            
 			return true;

@@ -2,19 +2,23 @@
  * Test session functions
  */
 import { 
-	setToken, getToken, removeToken,
+	setToken, getToken, removeToken, getTokenDetails
 } from '../../store';
-
-const key = 'test_token';
-const test_token = 'xsdfe423/23rwe/35234234/';
+import {
+	TEST_TOKEN, TEST_TOKEN_KEY
+} from '../../Constants';
 
 test('Test set and get token', () => {
-	setToken(test_token, key);
-	expect(getToken(key)).toEqual(test_token);
+	setToken(TEST_TOKEN, TEST_TOKEN_KEY);
+	expect(getToken(TEST_TOKEN_KEY)).toEqual(TEST_TOKEN);
+});
+
+test('Test TOKEN payload details', () => {
+	let payload = getTokenDetails(TEST_TOKEN_KEY);
+	expect(payload.username).toEqual('sky@sky.com');
 });
 
 test('Test remove token', () => {
-	removeToken(key);
-	expect(getToken(key)).toEqual(null);
+	removeToken(TEST_TOKEN_KEY);
+	expect(getToken(TEST_TOKEN_KEY)).toEqual(null);
 });
-

@@ -1,5 +1,3 @@
-import { dateFormatter } from '../utils';
-
 export const popularQuestions = (data) => {
 	return (`
     <tr>
@@ -13,7 +11,8 @@ export const popularQuestions = (data) => {
             ${data.date}
         </td>
         <td>
-        <img class="table__td__img pull-right hatch edit cursor-pointer" data-id="${data.question_id}" src="assets/img/clipboards.svg" />
+        <img title="Edit question" class="table__td__img pull-right hatch edit cursor-pointer" data-id="${data.question_id}" src="assets/img/clipboards.svg" />
+        
         <img title="Delete question" class="table__td__img cursor-pointer pull-right hatch delete" data-id="${data.question_id}" src="assets/img/trash.svg" />
         </td>
     </tr>

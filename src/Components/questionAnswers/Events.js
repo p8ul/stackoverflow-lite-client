@@ -1,5 +1,6 @@
 import { $on, postAndRedirect, toggleInnerText } from '../../utils';
-
+import { selectedQuestion } from '../../store';
+import { updateAnswer } from './actions';
 /**
  * Set comment event listeners
  *
@@ -25,6 +26,30 @@ export const HandleVotesEvents = () => {
 		$on(downvotesBtns[index], 'click',()=>{sendVote(downvotesBtns[index], false);});
 	});
 };
+
+/** Accept an answer */
+export const HandleAcceptAnswerEvents = () => {
+	const acceptBtns = document.querySelectorAll('.accepted');
+	Object.values(acceptBtns).map((el, index) => {		
+		$on(acceptBtns[index], 'click',()=>{setAnswerAccepted(acceptBtns[index], true);});	
+	});
+};
+
+/**
+ * Get answer id and call update answer function
+ * 
+ * @param {!Element|Window} el Target Element 
+ */
+
+const setAnswerAccepted = (el) => {	
+	let id = el.getAttribute('data-id');
+	let question_id = selectedQuestion().question.question_id;
+	updateAnswer({
+		url: `questions/${question_id}/answers/${id}`,
+		data: {accepted: el.checked},
+		el,
+	});
+}
 
 /**
  * Get answer id and comment text then call post comment function.

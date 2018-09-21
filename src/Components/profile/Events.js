@@ -5,7 +5,7 @@ import {
 } from '../../utils';
 import { deleteQuestion } from './actions';
 import { sendQuestion } from '../ask/actions';
-import { getQuestion } from '../../store';
+import { getQuestion, questions } from '../../store';
 
 let askForm;
 let data = {};
@@ -81,12 +81,15 @@ const openPopup = (el) => {
 const openEditPopup = (el) => {
 	let id = el.getAttribute('data-id');
 	let question = getQuestion(parseInt(id));
-	Object.values(askForm.elements).map(el => {
-		if (el.name) {
-			data[el.name] = question[el.name];
-			el.value = question[el.name];
-		}
-	});
+	try {
+		Object.values(askForm.elements).map(el => {
+			if (el.name) {
+				data[el.name] = question[el.name];
+				el.value = question[el.name];
+			}
+		});
+	} catch(err) {console.log(err);}
+	
 	// askForm.elements.title.value = question.title;
 	// askForm.elements.body.value = question.body;
 	let node = document.getElementById('askBtn');

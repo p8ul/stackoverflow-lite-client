@@ -14,9 +14,13 @@
     height: 100%;
     float: left;
 }
-
 .col-6 {
     width: 50% !important;
+    height: 100%;
+    float: left;
+}
+.col-8 {
+    width: 60% !important;
     height: 100%;
     float: left;
 }

@@ -1,13 +1,20 @@
 import api from '../../utils/api';
-import { getToken } from '../../store';
+import { 
+	getToken, 
+	selectedQuestion
+} from '../../store';
+import { SET_ANSWERS, SET_COMMENTS, SET_QUESTION} from '../../Constants';
+
 import {
 	formValidator, 
 	processListErrors,
-	resetQuestionAndAnswersDom 
+	resetQuestionAndAnswersDom,
+	toggleElement
 } from '../../utils';
 import { 
 	HandleCommentEvents, 
-	HandleVotesEvents
+	HandleVotesEvents,
+	HandleAcceptAnswerEvents
 } from './Events';
 /** Renders */
 import {
@@ -22,6 +29,7 @@ import {
 const callAllEvents = () => {
 	HandleVotesEvents();
 	HandleCommentEvents();
+	HandleAcceptAnswerEvents();
 };
 
 /**
@@ -36,6 +44,9 @@ export const getQuestion = (url) => {
 		.then(res => res.json())
 		.then(data => data.results)
 		.then(data => {
+			selectedQuestion({type: SET_QUESTION, payload: data.question[0]});
+			selectedQuestion({type: SET_ANSWERS, payload: data.answers});
+			selectedQuestion({type: SET_COMMENTS, payload: data.comments});
 			renderQuestionBody(data.question[0]);
 			renderQuestionTitle(data.question[0]);
 			renderAnswerHeader(data.question[0]);
@@ -44,6 +55,23 @@ export const getQuestion = (url) => {
 			resetQuestionAndAnswersDom();
 		})
 		.catch(error => console.error(error));
+};
+
+/**
+ * Update answer  
+ *
+ * @param {!Element} el event element
+ * @param {!string} url post answer api endpoint
+ * @param {!object} data request json payload
+ */
+export const updateAnswer = ({el, url, data}) => {
+	toggleElement(el);
+	api
+		.post(url, data, getToken(), 'PUT')
+		.then(res => res.json())
+		.then(data => {
+			setTimeout(()=> toggleElement(el), 1000);
+		});
 };
 
 /**

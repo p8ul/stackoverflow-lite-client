@@ -21,9 +21,9 @@ export const $on = (target, type, callback) => {
  * @param {!string} url url endpoint
  * @param {!object} data post object data
  */
-export const postAndRedirect = ({url, data}) => {
+export const postAndRedirect = ({url, data, method='POST'}) => {
 	api
-		.post(url, data, getToken())
+		.post(url, data, getToken(), method)
 		.then(res => res.json())
 		.then(() => {
 			window.location.reload();

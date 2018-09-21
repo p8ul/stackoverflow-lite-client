@@ -1,6 +1,17 @@
-import { $on, postAndRedirect, toggleInnerText } from '../../utils';
-import { selectedQuestion } from '../../store';
+import { 
+	$on, 
+	postAndRedirect, 
+	toggleInnerText, 
+	removeErrors,
+	formValidator,
+	render,
+	toggleElement,
+	editPopupNode,
+	dismissNode
+} from '../../utils';
+import { selectedQuestion, getAnswer } from '../../store';
 import { updateAnswer } from './actions';
+import { loaderSmall } from '../../Templates';
 /**
  * Set comment event listeners
  *
@@ -14,6 +25,7 @@ export const HandleCommentEvents = () => {
 	});
 };
 
+
 /**
  * Set upvote & downvote event listeners
  *
@@ -26,6 +38,109 @@ export const HandleVotesEvents = () => {
 		$on(downvotesBtns[index], 'click',()=>{sendVote(downvotesBtns[index], false);});
 	});
 };
+
+export const HandleEditDeleteAnswerEvents = () => {
+	const editAnswerBtns = document.querySelectorAll('.edit-answer');
+	const deleteAnswerBtns = document.querySelectorAll('.delete-answer');
+	const confirmDeleteAnswerBtns = document.querySelectorAll('.confirm-delete-answer');
+
+	Object.values(editAnswerBtns).map((el,index) => {
+		$on(editAnswerBtns[index], 'click', ()=>{sendUpdateAnswer(editAnswerBtns[index], true);});
+		$on(deleteAnswerBtns[index], 'click', ()=>{showDelete(deleteAnswerBtns[index], true);});
+		$on(confirmDeleteAnswerBtns[index], 'click', ()=>{deleteAnswer(confirmDeleteAnswerBtns[index], true);});
+	});
+	$on(dismissNode, 'click', () => toggleElement(editPopupNode));
+};
+
+const deleteAnswer = (el) => {
+	let id = el.getAttribute('data-id');
+	let question_id = selectedQuestion().question.question_id;
+	postAndRedirect({
+		url: `questions/${question_id}/answers/${id}`,
+		data: {},
+		method: 'DELETE'
+	});
+}
+const showDelete = (el) => {
+	let id = el.getAttribute('data-id');
+	let node = document.getElementById('confirm-delete'+id);
+	toggleElement(el);
+	setTimeout(() => {
+		toggleElement(node);	
+	}, 1000);
+	
+	setTimeout(()=> {
+		toggleElement(node);
+		setTimeout(() => {
+			toggleElement(el);	
+		}, 1000);		
+	},5000);
+	
+};
+
+/**
+ * Get answer id and call update answer function
+ * 
+ * @param {!Element|Window} el Target Element 
+ */
+let askForm;
+let data = {};
+const sendUpdateAnswer = (el) => {	
+	let id = el.getAttribute('data-id');
+	toggleElement(editPopupNode);
+	let question_id = selectedQuestion().question.question_id;
+	let answer = getAnswer(parseInt(id));
+	askForm = document.forms.ask;
+
+	const setState = (e) => {
+		data[e.target.name] = e.target.value;
+		removeErrors(data);
+	};
+	Object.values(askForm.elements).map(el => {
+		if (el.name) {
+			data[el.name] = '';
+			el.value = '';
+		}			
+	});
+
+	Object.values(askForm.elements).map(el => {		
+		$on(el, 'keyup',(e)=>{setState(e);});
+		$on(el, 'input',(e)=>{setState(e);});
+	});
+
+	Object.values(askForm.elements).map(el => {
+		if (el.name) {
+			console.error(el.name);
+			data[el.name] = answer[el.name];
+			el.value = answer[el.name];
+		}
+	});
+	$on(editAnswerBtn, 'click', event => updateAns({		
+		url: `questions/${question_id}/answers/${id}`,
+		data: data,
+		el,
+		event
+	}));
+};
+
+const updateAns = ({url, data, el, event}) => {
+	event.preventDefault();
+	let errors = formValidator(data);
+	
+	editAnswerBtn.innerText = '';
+	render('div', loaderSmall(), editAnswerBtn);
+	var isValid = Object.keys(errors).length === 0;
+	if (!isValid) {
+		return false;
+	}
+	postAndRedirect({		
+		url,
+		data,
+		method: 'PUT'
+	});
+
+};
+
 
 /** Accept an answer */
 export const HandleAcceptAnswerEvents = () => {
@@ -49,7 +164,7 @@ const setAnswerAccepted = (el) => {
 		data: {accepted: el.checked},
 		el,
 	});
-}
+};
 
 /**
  * Get answer id and comment text then call post comment function.

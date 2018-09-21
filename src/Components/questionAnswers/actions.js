@@ -14,7 +14,8 @@ import {
 import { 
 	HandleCommentEvents, 
 	HandleVotesEvents,
-	HandleAcceptAnswerEvents
+	HandleAcceptAnswerEvents,
+	HandleEditDeleteAnswerEvents
 } from './Events';
 /** Renders */
 import {
@@ -30,6 +31,7 @@ const callAllEvents = () => {
 	HandleVotesEvents();
 	HandleCommentEvents();
 	HandleAcceptAnswerEvents();
+	HandleEditDeleteAnswerEvents();
 };
 
 /**

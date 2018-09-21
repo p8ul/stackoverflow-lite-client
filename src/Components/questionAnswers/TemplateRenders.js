@@ -1,10 +1,18 @@
 
 import { 
 	questionTitle, questionBodyTemplate,
-	answerHeader, answerBody 
+	answerHeader, answerBody, answerForm 
 } from '../../Templates';
 import * as Node from './Nodes';
-import { render } from '../../utils';
+import { 
+	render, 
+	editPopupContent
+} from '../../utils';
+
+export const initializeRender = () => {	
+	editPopupContent.innerHTML = '';
+	render('div', answerForm(), editPopupContent);	
+};
 
 export const renderAnswerContent = (data, comments) => {
 	data.forEach((dataRecord) => {

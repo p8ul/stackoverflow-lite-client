@@ -90,8 +90,6 @@ const openEditPopup = (el) => {
 		});
 	} catch(err) {console.log(err);}
 	
-	// askForm.elements.title.value = question.title;
-	// askForm.elements.body.value = question.body;
 	let node = document.getElementById('askBtn');
 	node.setAttribute('data-id', id);
 	toggleElement(editPopupNode);

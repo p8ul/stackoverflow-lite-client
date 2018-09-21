@@ -60,7 +60,7 @@ const deleteAnswer = (el) => {
 		data: {},
 		method: 'DELETE'
 	});
-}
+};
 const showDelete = (el) => {
 	let id = el.getAttribute('data-id');
 	let node = document.getElementById('confirm-delete'+id);

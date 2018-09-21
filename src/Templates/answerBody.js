@@ -19,7 +19,7 @@ export const answerBody = (data, comments) => {
             <div class="col-10">
                 <p>                
                     ${data.answer_body}
-                    ${canAcceptAnswer(username) ? actionButtons(data): ''}
+                    ${canAcceptAnswer(data.username) ? actionButtons(data): ''}
                 </p>
             </div>
             <div class="col-2 float-right">

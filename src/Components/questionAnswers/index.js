@@ -6,6 +6,7 @@ import {
 import { getQuestion, sendAnswer } from './actions';
 import { answerFormElement } from './Nodes';
 import { searchEventListener } from '../questions/Events';
+import { initializeRender } from './TemplateRenders';
 
 let id = window.location.search.substr(1).split('=',2)[1];
 
@@ -15,11 +16,12 @@ class QuestionAndAnswers {
 			data: {},
 			answerFormElement: answerFormElement
 		};
-		searchEventListener();
+		searchEventListener();		
 		resetQuestionAndAnswersDom();
 		getQuestion(`questions/${id}`);
 		this.handleSubmitAnswerEvents();
 		this.resetData();
+		initializeRender();
 	}
 
 	setState(e) {

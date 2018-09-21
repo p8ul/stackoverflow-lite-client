@@ -9,12 +9,15 @@ import {
 	formValidator, 
 	processListErrors,
 	resetQuestionAndAnswersDom,
-	toggleElement
+	toggleElement,
+	render
 } from '../../utils';
+import { loader } from '../../Templates';
 import { 
 	HandleCommentEvents, 
 	HandleVotesEvents,
-	HandleAcceptAnswerEvents
+	HandleAcceptAnswerEvents,
+	HandleEditDeleteAnswerEvents
 } from './Events';
 /** Renders */
 import {
@@ -22,6 +25,8 @@ import {
 	renderQuestionBody,
 	renderQuestionTitle
 } from './TemplateRenders';
+import { parentNode } from '../questions/Nodes';
+import { headerNode } from './Nodes';
 /**
  * Call all event listen handlers
  *
@@ -30,6 +35,7 @@ const callAllEvents = () => {
 	HandleVotesEvents();
 	HandleCommentEvents();
 	HandleAcceptAnswerEvents();
+	HandleEditDeleteAnswerEvents();
 };
 
 /**
@@ -40,10 +46,12 @@ const callAllEvents = () => {
  * @param {!string} url url endpoint
  */
 export const getQuestion = (url) => {
+	render('div', loader(), headerNode);
 	api.get(url)
 		.then(res => res.json())
 		.then(data => data.results)
 		.then(data => {
+			headerNode.innerHTML = '';
 			selectedQuestion({type: SET_QUESTION, payload: data.question[0]});
 			selectedQuestion({type: SET_ANSWERS, payload: data.answers});
 			selectedQuestion({type: SET_COMMENTS, payload: data.comments});

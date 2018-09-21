@@ -10,3 +10,4 @@ export * from './loaderSmall';
 export * from './confirmAction';
 export * from './success';
 export * from './askQuestionForm';
+export * from './answerForm';

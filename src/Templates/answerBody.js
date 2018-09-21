@@ -1,5 +1,6 @@
 import { dateFormatter, canAcceptAnswer } from '../utils';
 import { acceptCheckBox } from './acceptCheckBox';
+import { actionButtons } from './actionButtons';
 import { isAccepted } from './isAccepted';
 import { selectedQuestion } from '../store';
 
@@ -18,7 +19,7 @@ export const answerBody = (data, comments) => {
             <div class="col-10">
                 <p>                
                     ${data.answer_body}
-                    ${canAcceptAnswer(username) ? 'yes': 'no'}
+                    ${canAcceptAnswer(data.username) ? actionButtons(data): ''}
                 </p>
             </div>
             <div class="col-2 float-right">

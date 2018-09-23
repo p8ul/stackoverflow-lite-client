@@ -1,3 +1,4 @@
+/* eslint no-undef: 0 */
 import { $on, removeErrors } from '../../utils';
 import { isLoggedIn } from '../../store';
 import { loginElement } from './Nodes';

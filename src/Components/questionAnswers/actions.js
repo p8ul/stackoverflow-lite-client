@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import api from '../../utils/api';
 import { 
 	getToken, 
@@ -25,7 +26,6 @@ import {
 	renderQuestionBody,
 	renderQuestionTitle
 } from './TemplateRenders';
-import { parentNode } from '../questions/Nodes';
 import { headerNode } from './Nodes';
 /**
  * Call all event listen handlers
@@ -77,7 +77,7 @@ export const updateAnswer = ({el, url, data}) => {
 	api
 		.post(url, data, getToken(), 'PUT')
 		.then(res => res.json())
-		.then(data => {
+		.then(() => {
 			setTimeout(()=> toggleElement(el), 1000);
 		});
 };
@@ -103,8 +103,8 @@ export const sendAnswer = ({event, url, data, callBackFunc}) => {
 			if (data.errors) {
 				processListErrors(data.message, 'loginErrors');
 				return false;
-			}
-			// callBackFunc();
+			}			
 			window.location.reload();
+			callBackFunc();
 		});
 };

@@ -1,3 +1,5 @@
+/* eslint no-console: 0 */
+
 import { getTokenDetails } from '../store';
 import { TOKEN_KEY } from '../Constants';
 /**

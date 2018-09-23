@@ -1,8 +1,10 @@
+/* eslint no-console: 0 */
+
 import api from './api';
 import { getToken } from '../store';
 import { render } from './render';
 import { successTemplate } from '../Templates';
-import { popupContent, popupNode } from './Nodes';
+import { popupNode } from './Nodes';
 
 /**
  * addEventListener wrapper
@@ -64,7 +66,7 @@ export const toggleElement = (el) => {
 	
 };
 
-export const popUp = (message) => {
+export const popUp = (message, popupContent) => {
 	popupContent.innerHTML = '';
 	render('div', successTemplate(message), popupContent);
 	setTimeout(() => toggleElement(popupNode), 4000);

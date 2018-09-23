@@ -35,6 +35,7 @@
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    border-radius: 5px;
 }
 
  .popup__card {

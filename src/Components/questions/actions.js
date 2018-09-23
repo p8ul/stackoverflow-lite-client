@@ -1,3 +1,5 @@
+/* eslint no-console: 0 */
+
 import api from '../../utils/api';
 
 export const searchQuestions = ({query, callBackFnc}) => {

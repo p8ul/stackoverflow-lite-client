@@ -24,7 +24,6 @@ export const processObjectErrors = (errors, idSelector) => {
 };
 
 export const processListErrors = (errors, idSelector) => {
-	console.log(errors)
 	let parentNode = document.getElementById(idSelector);
 	parentNode.innerHTML = '';
 	let child = '';

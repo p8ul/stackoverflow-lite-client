@@ -1,3 +1,5 @@
+/* eslint no-console: 0 */
+
 import { isLoggedIn, logOut } from '../store';
 
 export const resetQuestionAndAnswersDom = () => {
@@ -16,7 +18,7 @@ export const resetQuestionAndAnswersDom = () => {
 				commentBoxes[index].classList.add('hidden');
 				commentBtnz[index].classList.add('hidden');
 			});
-		} catch(e) {}
+		} catch(e) {console.error(e);}
 			
 	}
 };

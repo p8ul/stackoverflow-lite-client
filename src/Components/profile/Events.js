@@ -1,3 +1,5 @@
+/* eslint no-undef: 0 */
+/* eslint no-console: 0 */
 import { 
 	$on, 
 	toggleElement, dismissNode, 
@@ -5,7 +7,7 @@ import {
 } from '../../utils';
 import { deleteQuestion } from './actions';
 import { sendQuestion } from '../ask/actions';
-import { getQuestion, questions } from '../../store';
+import { getQuestion } from '../../store';
 
 let askForm;
 let data = {};

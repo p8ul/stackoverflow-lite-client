@@ -1,5 +1,5 @@
 import { $on } from '../../utils';
-import { searchNode, loaderNode, parentNode } from './Nodes';
+import { searchNode, parentNode } from './Nodes';
 import { searchQuestions } from './actions';
 import { renderQuestionList, renderLoader } from './TemplateRenders';
 

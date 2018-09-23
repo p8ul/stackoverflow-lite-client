@@ -1,3 +1,4 @@
+/* eslint no-undef: 0 */
 import { 
 	$on, 
 	postAndRedirect, 
@@ -61,6 +62,7 @@ const deleteAnswer = (el) => {
 		method: 'DELETE'
 	});
 };
+
 const showDelete = (el) => {
 	let id = el.getAttribute('data-id');
 	let node = document.getElementById('confirm-delete'+id);
@@ -110,7 +112,6 @@ const sendUpdateAnswer = (el) => {
 
 	Object.values(askForm.elements).map(el => {
 		if (el.name) {
-			console.error(el.name);
 			data[el.name] = answer[el.name];
 			el.value = answer[el.name];
 		}
@@ -118,12 +119,11 @@ const sendUpdateAnswer = (el) => {
 	$on(editAnswerBtn, 'click', event => updateAns({		
 		url: `questions/${question_id}/answers/${id}`,
 		data: data,
-		el,
 		event
 	}));
 };
 
-const updateAns = ({url, data, el, event}) => {
+const updateAns = ({url, data, event}) => {
 	event.preventDefault();
 	let errors = formValidator(data);
 	

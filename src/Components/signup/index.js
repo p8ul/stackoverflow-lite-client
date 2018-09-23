@@ -1,3 +1,5 @@
+/* eslint no-undef: 0 */
+
 import { 
 	removeErrors, 
 	resetSignupDom, $on

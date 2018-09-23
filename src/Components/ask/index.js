@@ -1,4 +1,4 @@
-
+/* eslint no-undef: 0 */
 import { 
 	removeErrors,
 	$on, accessController
@@ -14,8 +14,7 @@ export default class Ask {
 		this.state = {
 			data: {}
 		};
-		this.initForm();
-        
+		this.initForm();        
 		this.handleEvents();
 	}
     

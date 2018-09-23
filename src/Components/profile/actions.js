@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import api from '../../utils/api';
 import { getToken, questions } from '../../store';
 import { 
@@ -8,7 +9,7 @@ import {
 	answersNode, questionsNode,
 	votesNode } from './Nodes';
 import { HandleDeleleEvents } from './Events';
-import { popUp } from '../../utils';
+import { popUp, popupContent } from '../../utils';
 
 /**
  * Fetch all users questions from the server,
@@ -53,7 +54,7 @@ export const deleteQuestion = (id) => {
 	api.delete(`questions/${id}`, {}, getToken())
 		.then(res => res.json())
 		.then(data => {
-			popUp(data.message);
+			popUp(data.message, popupContent);
 			setTimeout(()=> window.location.reload(),5000);
 		})
 		.catch(error => console.error(error));

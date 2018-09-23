@@ -23,7 +23,7 @@ export const askQuestionForm = () => {
         </div>
 
         <div class="text-center">
-            <button id="askBtn" class="floating btn btn-primary bg-orange p-15 btn-block">
+            <button id="askBtn" class=" btn btn-primary bg-orange p-15 btn-block">
                 Edit Question
             </button>
         </div> 

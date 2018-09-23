@@ -13,7 +13,7 @@ export const answerForm = () => {
         </div>
 
         <div class="text-center">
-            <button id="editAnswerBtn" class="floating btn btn-primary bg-orange p-15 btn-block">
+            <button id="editAnswerBtn" class="btn btn-primary bg-orange p-15 btn-block">
                 Edit answer
             </button>
         </div> 

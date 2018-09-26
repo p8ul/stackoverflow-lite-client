@@ -5,15 +5,15 @@ import {
 
 const data = {};
 
-test('Validate email', () => {
+test('Should validate email field', () => {
 	expect(testEmail.test('email@example.com')).toBe(true);
 });
 
-test('Test form validator', () => {
+test('Should validator validate form data', () => {
 	expect(typeof formValidator(data)).toBe(typeof {});
 });
 
-test('Toggle innerHtml of an element', () =>{
+test('Should toggle innerHtml of an element', () =>{
 	document.body.innerHTML =
 				'<div>' +
 				'  <div id="username" >Hello</div>' +
@@ -25,6 +25,6 @@ test('Toggle innerHtml of an element', () =>{
 	expect(el.innerText).toEqual(newText);
 });
 
-test('Return time ago from date', () => {
+test('Should return time ago from date', () => {
 	expect(dateFormatter()).toEqual('a few seconds ago');
 });

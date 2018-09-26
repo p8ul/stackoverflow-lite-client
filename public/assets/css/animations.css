@@ -361,4 +361,46 @@
 	animation-timing-function: ease-in-out;	
 	-webkit-animation-timing-function: ease-in-out;	
 }
+
+/* dot */
+.dot {
+	animation-name: dot;
+	-webkit-animation-name: dot;
+
+	animation-duration: 7.5s;	
+	-webkit-animation-duration: 7.5s;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes dot {
+	0% {
+		transform: translateY(0%);
+		background-color: red;	
+	}
+	50% {
+		transform: translateY(8%);
+		background-color: blueviolet;	
+	}	
+	100% {
+		transform: translateY(0%);
+		background-color: rebeccapurple;
+	}			
+}
+
+@-webkit-keyframes dot {
+	0% {
+		-webkit-transform: translateY(0%);
+		background-color: red;	
+	}
+	50% {
+		-webkit-transform: translateY(8%);
+		background-color: blueviolet;	
+	}	
+	100% {
+		-webkit-transform: translateY(0%);
+		background-color: rebeccapurple;
+	}			
+}
    

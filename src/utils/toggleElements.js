@@ -2,6 +2,15 @@
 
 import { isLoggedIn, logOut } from '../store';
 
+/** 
+ *  Logged in user
+ *  	:Hide login link if user is logged in
+ *  	:Show logout link if user is logged in
+ *  Guest User
+ * 		: Replace answer form with login button
+ * 		: Hide comment form
+ * 
+ */
 export const resetQuestionAndAnswersDom = () => {
 	if (isLoggedIn()) {
 		document.getElementById('login-link').classList.add('hidden');
@@ -23,6 +32,10 @@ export const resetQuestionAndAnswersDom = () => {
 	}
 };
 
+/** 
+ *  Hide login link if user is logged in
+ *  Show logout link if user is logged in
+ */
 export const resetQuestionDom = () => {
 	if (isLoggedIn()) {
 		document.getElementById('login-link').classList.add('hidden');
@@ -32,6 +45,10 @@ export const resetQuestionDom = () => {
 	}
 };
 
+/** Hide login link if user is logged in
+ *  Remove sign up form if user is logged in
+ *  Show logout link if user is logged in
+ */
 export const resetSignupDom = () => {
 	if (isLoggedIn()) {
 		document.getElementById('signup-form').innerHTML = 'You are logged in';

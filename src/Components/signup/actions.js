@@ -25,6 +25,10 @@ export const signUp = ({event, url, data, el}) => {
 		confirmPassNode.innerHTML = 'Passwords should match';
 		return false;
 	}
+	if (passwordChanged() === 'weak') {
+		confirmPassNode.innerHTML = 'Use a stronger password';
+		return;
+	}
     
 	if (!testEmail.test(data.email)) {
 		emailErrorNode.innerHTML = 'Invalid email';
@@ -42,6 +46,7 @@ export const signUp = ({event, url, data, el}) => {
 		.then(res => res.json())
 		.then(data => {
 			if (data.errors) {
+				el.innerHTML = 'Sign up';
 				processObjectErrors(data.errors, 'signupErrors');
 				return false;
 			}
@@ -49,7 +54,30 @@ export const signUp = ({event, url, data, el}) => {
 			window.location.reload();
 		})
 		.catch(err => {
-			el.innerHTML = 'Login';
+			el.innerHTML = 'Sign up';
 			console.error(err);
 		});
+};
+
+export const passwordChanged = () => {
+	var strengthElement = document.getElementById('strength');
+	var strongRegex = new RegExp('^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$', 'g');
+	var mediumRegex = new RegExp('^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$', 'g');
+	var enoughRegex = new RegExp('(?=.{6,}).*', 'g');
+	let strength = 'weak';
+	var pwd = document.getElementById('password');
+	if (pwd.value.length==0) {
+		strengthElement.innerHTML = 'Type Password';		
+	} else if (false == enoughRegex.test(pwd.value)) {
+		strengthElement.innerHTML = 'More Characters';
+	} else if (strongRegex.test(pwd.value)) {
+		strengthElement.innerHTML = '<span style="color:green">Strong!</span>';
+		strength = 'strong';
+	} else if (mediumRegex.test(pwd.value)) {
+		strengthElement.innerHTML = '<span style="color:orange">Medium!</span>';
+		strength = 'medium';
+	} else {
+		strengthElement.innerHTML = '<span style="color:red">Weak!</span>';
+	}
+	return strength;
 };

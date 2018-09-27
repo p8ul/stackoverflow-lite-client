@@ -22,3 +22,12 @@ export const testTemplate = () => {
     <div id='test' data-id="2"></div>
 	`;
 };
+
+export const testForm = () => {
+	return `
+     <form name="testForm">
+        <input type="password" name="password" value="123" id="password" />
+        <div id="strength"></div>
+     </form>
+    `;
+};

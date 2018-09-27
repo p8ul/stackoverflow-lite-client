@@ -3,7 +3,9 @@ import api from '../../utils/api';
 import { 
 	formValidator, 
 	processListErrors,
-	render
+	render,
+	popUp,
+	popupContent
 } from '../../utils';
 import { getToken } from '../../store';
 import { loaderSmall } from '../../Templates';
@@ -17,26 +19,34 @@ import { loaderSmall } from '../../Templates';
  */
 export const sendQuestion = ({event, url, data, method='POST'}) => {
 	event.preventDefault();
-	
+		
 	let errors = formValidator(data);		
 	var isValid = Object.keys(errors).length === 0;
 	if (!isValid) {
 		return false;
 	}
+	askBtn.setAttribute('disabled', 'disabled');
 	askBtn.innerText = '';
 	render('div', loaderSmall(), askBtn);
 	api
 		.post(url, data, getToken(), method)
 		.then(res => res.json())
-		.then(data => {
-			askBtn.innerText = 'Post a question';
+		.then(data => {	
 			if (data.errors) {
+				askBtn.innerText = 'Post a question';
 				processListErrors(data.message, 'loginErrors');
 				return false;
 			}
 			let id = data.results.question_id;
-			window.location.href = `question_answers.html?id=${id}`;
-			callBackFunc();
+			popUp('Question posted successfully', popupContent);
+			setTimeout(()=>{
+				window.location.href = `question_answers.html?id=${id}`;
+			}, 5000);
+		})
+		.catch(error => {
+			console.error(error);
+			askBtn.innerText = 'Post a question';
+			askBtn.removeAttribute('disabled')
 		});
 };
 

@@ -5,7 +5,7 @@ import {
 	resetSignupDom, $on
 } from '../../utils';
 import { signupNode } from './Nodes';
-import { signUp } from './actions';
+import { signUp, passwordChanged } from './actions';
 
 export default class SignUp {
 	constructor () {
@@ -30,6 +30,7 @@ export default class SignUp {
 	setState (e) {
 		this.state.data[e.target.name] = e.target.value;
 		removeErrors(this.state.data);
+		passwordChanged();
 	}
     
 	handleEvents () {

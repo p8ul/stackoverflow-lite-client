@@ -51,6 +51,10 @@ export const toggleInnerText = (el, oldText, newText) => {
 	}, 2000);
 };
 
+/**
+ * Hide or Shows an element if hidden
+ * @param {!Element} el target Element
+ */
 export const toggleElement = (el) => {
 	if (el.classList.contains('hidden')) {
 		el.classList.remove('fadeOut');
@@ -66,6 +70,11 @@ export const toggleElement = (el) => {
 	
 };
 
+/**
+ * Shows a window popup and renders popup message
+ * @param {!String} message popup message
+ * @param {!Element} popupContent target Element
+ */
 export const popUp = (message, popupContent) => {
 	popupContent.innerHTML = '';
 	render('div', successTemplate(message), popupContent);

@@ -12,3 +12,4 @@ export * from './success';
 export * from './askQuestionForm';
 export * from './answerForm';
 export * from './testTemplate';
+export * from './actionButtons';

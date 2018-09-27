@@ -15,7 +15,6 @@ export const canAcceptAnswer = (username, key=TOKEN_KEY) => {
 		}
 		return false;
 	} catch(err){
-		console.error(err);
 		return false;
 	}
 	

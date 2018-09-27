@@ -1,3 +1,7 @@
+/**
+ * Validates form fields and error text to error helper text
+ * @param {!Object} data Object with form fields and their values
+ */
 export const formValidator = (data) => {
 	let errors = {};
 	let error_message = 'field required';
@@ -12,6 +16,11 @@ export const formValidator = (data) => {
 	return errors;
 };
 
+/**
+ * Insert errors from an object in an element
+ * @param {!Object} errors an object containing errors
+ * @param {!Element} idSelector 
+ */
 export const processObjectErrors = (errors, idSelector) => {
 	let parentNode = document.getElementById(idSelector);
 	parentNode.innerHTML = '';
@@ -23,6 +32,11 @@ export const processObjectErrors = (errors, idSelector) => {
 	}
 };
 
+/**
+ * Insert an array of errors in id element
+ * @param {!Array} errors an array of errors
+ * @param {!Element} idSelector id selector where error text are appended
+ */
 export const processListErrors = (errors, idSelector) => {
 	let parentNode = document.getElementById(idSelector);
 	parentNode.innerHTML = '';
@@ -32,10 +46,15 @@ export const processListErrors = (errors, idSelector) => {
 	parentNode.appendChild(child);
 };
 
+/**
+ * Clears errors text from a form 
+ * @param {!Object} data form fields name and value object
+ */
 export const removeErrors = data => {
 	for (var key in data) {
 		document.getElementById(key+'_error').innerHTML = '';		
 	}
 };
 
+/** Test email regex */
 export const testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;

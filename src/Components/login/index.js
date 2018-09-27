@@ -31,7 +31,7 @@ export default class Login {
 				this.state.data[el.name] = '';
 				el.value = '';
 			}	
-		});
+		});	
 	}
     
 	handleEvents () {

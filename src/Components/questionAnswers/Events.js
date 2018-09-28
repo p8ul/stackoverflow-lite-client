@@ -125,14 +125,14 @@ const sendUpdateAnswer = (el) => {
 
 const updateAns = ({url, data, event}) => {
 	event.preventDefault();
-	let errors = formValidator(data);
+	let errors = formValidator(data);	
 	
-	editAnswerBtn.innerText = '';
-	render('div', loaderSmall(), editAnswerBtn);
 	var isValid = Object.keys(errors).length === 0;
 	if (!isValid) {
 		return false;
 	}
+	editAnswerBtn.innerText = '';
+	render('div', loaderSmall(), editAnswerBtn);
 	postAndRedirect({		
 		url,
 		data,

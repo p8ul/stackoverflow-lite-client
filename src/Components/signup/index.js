@@ -1,7 +1,7 @@
 /* eslint no-undef: 0 */
 
 import { 
-	removeErrors, 
+	removeErrors, toggleElement, preLoader,
 	resetSignupDom, $on, passwordChanged
 } from '../../utils';
 import { signupNode } from './Nodes';
@@ -16,6 +16,7 @@ export default class SignUp {
 		};
 		this.initFormData();
 		this.handleEvents();
+		toggleElement(preLoader);
 	}
 	initFormData () {
 		// initialize form data (reset form fields)

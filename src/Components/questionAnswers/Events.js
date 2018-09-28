@@ -174,7 +174,7 @@ const setAnswerAccepted = (el) => {
 const sendComment = (el) => {
 	let id = el.getAttribute('data-id');
 	let commentText = document.getElementById(`commentBody${id}`).value;	
-	if (!commentText) {
+	if (!commentText.trim()) {
 		toggleInnerText(el, el.innerText, 'Please add a comment');
 	} else {
 		el.innerText = 'Sending ....';

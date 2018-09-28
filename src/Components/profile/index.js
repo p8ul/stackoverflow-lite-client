@@ -1,6 +1,5 @@
 import { 
-	resetQuestionAndAnswersDom, accessController,
-	toggleElement, preLoader
+	accessController,
 } from '../../utils';
 import { getQuestions, getUserStats } from './actions';
 import { initializeRender } from './TemplateRenders';
@@ -13,10 +12,8 @@ class Profile {
 		};
 		accessController();
 		initializeRender();
-		resetQuestionAndAnswersDom();
 		getQuestions();
 		getUserStats();
-		toggleElement(preLoader);
 		setTimeout(profileEvents(), 2000);
 		
 	}

@@ -5,10 +5,10 @@
 export const formValidator = (data) => {
 	let errors = {};
 	let error_message = 'field required';
-	for (var key in data) {		
+	for (var key in data) {	
 		if (!data[key].trim('')) {
 			errors[key] = error_message;
-			document.getElementById(key+'_error').innerHTML = key + ' ' + error_message;
+			document.getElementById(key+'_error').innerHTML = key + ' ' + error_message;			
 		} else {
 			document.getElementById(key+'_error').innerHTML = '';
 		}

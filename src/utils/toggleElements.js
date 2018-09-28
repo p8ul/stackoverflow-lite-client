@@ -1,6 +1,7 @@
 /* eslint no-console: 0 */
 
 import { isLoggedIn, logOut } from '../store';
+import { toggleElement, preLoader} from '../utils';
 
 /** 
  *  Logged in user
@@ -15,6 +16,7 @@ export const resetQuestionAndAnswersDom = () => {
 	if (isLoggedIn()) {
 		document.getElementById('login-link').classList.add('hidden');
 		document.getElementById('logout-link').classList.remove('hidden');		
+		toggleElement(preLoader);
 		// reset token onclick listener
 		logOut();
 	} else {
@@ -28,6 +30,7 @@ export const resetQuestionAndAnswersDom = () => {
 				commentBtnz[index].classList.add('hidden');
 			});
 		} catch(e) {console.error(e);}
+		toggleElement(preLoader);
 			
 	}
 };
@@ -40,6 +43,7 @@ export const resetQuestionDom = () => {
 	if (isLoggedIn()) {
 		document.getElementById('login-link').classList.add('hidden');
 		document.getElementById('logout-link').classList.remove('hidden');
+		toggleElement(preLoader);
 		// reset token onclick listener
 		logOut();
 	}
@@ -54,9 +58,13 @@ export const resetSignupDom = () => {
 		document.getElementById('signup-form').innerHTML = 'You are logged in';
 		document.getElementById('login-link').classList.add('hidden');
 		document.getElementById('logout-link').classList.remove('hidden');
+		toggleElement(preLoader);
 		// reset token on click listener
 		logOut();
+	} else {
+		toggleElement(preLoader);
 	}
+
 };
 
 
@@ -67,6 +75,7 @@ export const accessController = () => {
 	if (isLoggedIn()) {
 		document.getElementById('login-link').classList.add('hidden');
 		document.getElementById('logout-link').classList.remove('hidden');
+		toggleElement(preLoader);
 		// reset token onclick listener
 		logOut();
 	} else {

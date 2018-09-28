@@ -91,6 +91,7 @@ export const updateAnswer = ({el, url, data}) => {
  */
 export const sendAnswer = ({event, url, data, callBackFunc}) => {
 	event.preventDefault();
+	console.error(data)
 	let errors = formValidator(data);		
 	var isValid = Object.keys(errors).length === 0;
 	if (!isValid) {

@@ -12,7 +12,6 @@ export default class Login {
 		};
 		this.initFormData();
 		this.handleEvents();
-		toggleElement(preLoader);
 	}
     
 	setState(e) {
@@ -24,6 +23,7 @@ export default class Login {
 		if (isLoggedIn()) {
 			window.location.href = '/index.html';
 		}
+		toggleElement(preLoader);
 	}
 	initFormData () {
 		// initialize form data (reset form fields)

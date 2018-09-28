@@ -42,9 +42,9 @@ test('should process list errors', () => {
 });
 
 test('should trim a string', () => {
-	let testString = " data"
-	expect(testString.trim()).toEqual('data')
-})
+	let testString = ' data';
+	expect(testString.trim()).toEqual('data');
+});
 
 
 

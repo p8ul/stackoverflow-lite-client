@@ -2,14 +2,11 @@ import {
 	render, 
 	toggleElement,
 	popUp,
-	$on,
-	resetQuestionDom,
-	resetSignupDom	
+	$on	
 } from '../../utils';
 import { 
 	testTemplate, 
 	rootTemplate,
-	signupDom
 } from '../../Templates';
 
 document.body.innerHTML = rootTemplate();
@@ -41,16 +38,5 @@ test('Should add an event listener', ()=> {
 	testBtn.click();
 	expect(testBtn.classList.contains('fadeOut')).toEqual(true);
 });
-
-test('should reset dom elements when user is not logged in', () => {
-	rootNode.innerHTML = '';
-	const callback = jest.fn();
-	callback();
-	render('div', signupDom(), rootNode);
-	resetQuestionDom(callback);
-	resetSignupDom(callback);
-	expect(callback).toBeCalled();
-});
-
 
 

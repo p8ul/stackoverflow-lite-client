@@ -5,8 +5,8 @@
 export const formValidator = (data) => {
 	let errors = {};
 	let error_message = 'field required';
-	for (var key in data) {
-		if (!data[key]) {
+	for (var key in data) {		
+		if (!data[key].trim('')) {
 			errors[key] = error_message;
 			document.getElementById(key+'_error').innerHTML = key + ' ' + error_message;
 		} else {
@@ -58,3 +58,11 @@ export const removeErrors = data => {
 
 /** Test email regex */
 export const testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+
+if(typeof(String.prototype.trim) === 'undefined')
+{
+	String.prototype.trim = function() 
+	{
+		return String(this).replace(/^\s+|\s+$/g, '');
+	};
+}

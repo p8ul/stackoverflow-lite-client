@@ -6,7 +6,25 @@ Client app for [stackoverflow lite](https://github.com/p8ul/stackoverflow-lite/)
 ## Heroku deployment
 > **[Check it out](https://stackoverflow-client.herokuapp.com/)**
 
+## How should this be manually tested?
+Clone repository
+```
+     $ git clone https://github.com/p8ul/stackoverflow-lite-client
+     $ cd stackoverflow-lite-client
+```
 
+Install dependencies
+```
+      $ npm i
+```
+Start server
+```
+      npm start
+```
+Run test
+ ```
+      npm run test
+```
 ## Credits
 This challenge was part of the Bootcamp 31 NBO Andela.
 

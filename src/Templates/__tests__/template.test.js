@@ -5,7 +5,8 @@ import {
 	answerBody,
 	actionButtons,
 	answerForm,
-	answerHeader
+	answerHeader,
+	askQuestionForm
 } from '../../Templates';
 
 document.body.innerHTML = rootTemplate();
@@ -55,5 +56,8 @@ test('should render answer Header', () => {
 	expect(String(node.innerHTML)).toEqual(data.answers + '. Answer(s)');
 });
 
-
-
+test('should render ask question form', () => {
+	root.innerHTML = '';
+	render('div', askQuestionForm(data), root);
+	expect(Object.values(ask.elements).length).toEqual(3);
+});

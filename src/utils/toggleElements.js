@@ -16,7 +16,6 @@ export const resetQuestionAndAnswersDom = () => {
 	if (isLoggedIn()) {
 		document.getElementById('login-link').classList.add('hidden');
 		document.getElementById('logout-link').classList.remove('hidden');		
-		toggleElement(preLoader);
 		// reset token onclick listener
 		logOut();
 	} else {
@@ -29,9 +28,7 @@ export const resetQuestionAndAnswersDom = () => {
 				commentBoxes[index].classList.add('hidden');
 				commentBtnz[index].classList.add('hidden');
 			});
-		} catch(e) {console.error(e);}
-		toggleElement(preLoader);
-			
+		} catch(e) {console.error(e);}			
 	}
 };
 

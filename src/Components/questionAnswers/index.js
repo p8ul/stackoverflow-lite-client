@@ -2,7 +2,8 @@
 import { 
 	$on,
 	removeErrors,
-	resetQuestionAndAnswersDom 
+	resetQuestionAndAnswersDom,
+	toggleElement, preLoader
 } from '../../utils';
 import { getQuestion, sendAnswer } from './actions';
 import { answerFormElement } from './Nodes';
@@ -23,6 +24,7 @@ class QuestionAndAnswers {
 		this.handleSubmitAnswerEvents();
 		this.resetData();
 		initializeRender();
+		toggleElement(preLoader);
 	}
 
 	setState(e) {

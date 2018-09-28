@@ -1,4 +1,4 @@
-import { resetQuestionDom } from '../../utils';
+import { resetQuestionDom, toggleElement, preLoader } from '../../utils';
 import { searchEventListener } from './Events';
 import { searchQuestions } from './actions';
 import { renderQuestionList, renderLoader } from './TemplateRenders';
@@ -10,6 +10,7 @@ export default class Questions {
 		renderLoader();
 		searchQuestions({query: '', callBackFnc});
 		searchEventListener();
+		toggleElement(preLoader);
 	}
 }
 

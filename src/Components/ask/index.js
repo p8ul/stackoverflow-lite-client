@@ -1,7 +1,8 @@
 /* eslint no-undef: 0 */
 import { 
 	removeErrors,
-	$on, accessController
+	$on, accessController, 
+	toggleElement, preLoader
 } from '../../utils';
 import { searchEventListener } from '../questions/Events';
 import { askElement } from './Nodes';
@@ -16,6 +17,7 @@ export default class Ask {
 		};
 		this.initForm();        
 		this.handleEvents();
+		toggleElement(preLoader);
 	}
     
 	initForm() {

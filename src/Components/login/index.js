@@ -1,5 +1,5 @@
 /* eslint no-undef: 0 */
-import { $on, removeErrors } from '../../utils';
+import { $on, removeErrors, toggleElement, preLoader } from '../../utils';
 import { isLoggedIn } from '../../store';
 import { loginElement } from './Nodes';
 import { login } from './actions';
@@ -12,6 +12,7 @@ export default class Login {
 		};
 		this.initFormData();
 		this.handleEvents();
+		toggleElement(preLoader);
 	}
     
 	setState(e) {

@@ -37,6 +37,3 @@ td {
     transition: all 150ms ease .02s;
 }
 
-.table__td__img:hover {
-    height: 24px;
-}

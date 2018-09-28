@@ -1,6 +1,5 @@
-import { passwordChanged } from '../actions';
 import { rootTemplate, testForm } from '../../../Templates';
-import { render } from '../../../utils';
+import { render, passwordChanged } from '../../../utils';
 
 document.body.innerHTML = rootTemplate();
 let root = document.getElementById('root');
@@ -16,4 +15,7 @@ test('should validate the strength of the password', () => {
 
 	passwordNode.value = '12qwery@';
 	expect(passwordChanged()).toEqual('medium');
+
+	passwordNode.value = '';
+	expect(passwordChanged()).toEqual('weak');
 });

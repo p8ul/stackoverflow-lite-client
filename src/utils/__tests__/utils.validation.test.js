@@ -1,5 +1,6 @@
 import {
-	formValidator, render, removeErrors
+	formValidator, render, removeErrors,
+	processListErrors, processObjectErrors
 } from '../../utils';
 import { answerForm, rootTemplate } from '../../Templates';
 
@@ -9,6 +10,9 @@ render('div', answerForm(), rootNode);
 let askForm = document.forms.ask;
 
 let data = {};
+let listErrors = ['error 1'];
+let objectErrors = {listErrors};
+
 Object.values(askForm.elements).map(el => {
 	if (el.name) {
 		data[el.name] = '';
@@ -24,4 +28,23 @@ test('Should validate form fields', ()=> {
 	removeErrors(data);
 	expect(errorDiv.innerHTML).toEqual('');
 });
+
+test('should process list errors', () => {
+	rootNode.innerHTML = '<div id="errors"></div>';
+	processListErrors(listErrors, 'errors');
+	let errors = document.getElementById('errors');
+	expect(errors.innerHTML).toBeDefined();
+
+	rootNode.innerHTML = '<div id="errors"></div>';
+	processObjectErrors(objectErrors, 'errors');
+	errors = document.getElementById('errors');
+	expect(errors.innerHTML).toBeDefined();
+});
+
+test('should trim a string', () => {
+	let testString = " data"
+	expect(testString.trim()).toEqual('data')
+})
+
+
 

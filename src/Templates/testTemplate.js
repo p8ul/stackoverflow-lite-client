@@ -31,3 +31,10 @@ export const testForm = () => {
      </form>
     `;
 };
+
+export const signupDom = () => {
+	return `
+      <div id='login-link' class="hidden"></div>
+      <div id='logout-link' class="hidden"></div>
+    `;
+};

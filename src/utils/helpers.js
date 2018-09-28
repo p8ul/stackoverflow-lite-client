@@ -80,3 +80,27 @@ export const popUp = (message, popupContent) => {
 	render('div', successTemplate(message), popupContent);
 	setTimeout(() => toggleElement(popupNode), 4000);
 };
+
+export const passwordChanged = () => {
+	var strengthElement = document.getElementById('strength');
+	var strongRegex = new RegExp('^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$', 'g');
+	var mediumRegex = new RegExp('^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$', 'g');
+	var enoughRegex = new RegExp('(?=.{6,}).*', 'g');
+	let strength = 'weak';
+	var pwd = document.getElementById('password');
+	if (pwd.value.length==0) {
+		strengthElement.innerHTML = 'Type Password';		
+	} else if (false == enoughRegex.test(pwd.value)) {
+		strengthElement.innerHTML = 'More Characters';
+	} else if (strongRegex.test(pwd.value)) {
+		strengthElement.innerHTML = '<span style="color:green">Strong!</span>';
+		strength = 'strong';
+	} else if (mediumRegex.test(pwd.value)) {
+		strengthElement.innerHTML = '<span style="color:orange">Medium!</span>';
+		strength = 'medium';
+	} else {
+		strengthElement.innerHTML = '<span style="color:red">Weak!</span>';
+	}
+	return strength;
+};
+

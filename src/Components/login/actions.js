@@ -3,6 +3,7 @@ import api from '../../utils/api';
 import { 
 	formValidator, 
 	processListErrors,
+	processObjectErrors,
 	render, testEmail
 } from '../../utils';
 import { setToken } from '../../store';
@@ -39,8 +40,13 @@ export const login = ({event, url, data, el}) => {
 		.then(data => {
 			el.innerHTML = 'Login';
 			if (data.errors) {
-				processListErrors(data.errors, 'loginErrors');
-				return false;
+				if (typeof data.errors === 'object') {
+					processObjectErrors(data.errors, 'loginErrors');
+					return false;
+				} else {
+					processListErrors(data.errors, 'loginErrors');
+					return false;
+				}				
 			}
 			setToken(data.auth_token);
 			window.location.reload();

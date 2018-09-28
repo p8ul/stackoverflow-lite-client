@@ -2,6 +2,7 @@ import {
 	testEmail, formValidator, toggleInnerText,
 	dateFormatter
 } from '../../utils';
+import { api } from '../api';
 
 const data = {};
 
@@ -27,4 +28,23 @@ test('Should toggle innerHtml of an element', () =>{
 
 test('Should return time ago from date', () => {
 	expect(dateFormatter()).toEqual('a few seconds ago');
+});
+global.fetch = require('jest-fetch-mock');
+test('should test post api method', () => {
+	api.post('/')
+		.then(data => {
+			expect(data).toEqual (Promise({}));
+		});	
+});
+test('should test delete api method', () => {
+	api.delete('/')
+		.then(data => {
+			expect(data).toEqual (Promise({}));
+		});	
+});
+test('should test get api method', () => {
+	api.get('/')
+		.then(data => {
+			expect(data).toEqual (Promise({}));
+		});	
 });

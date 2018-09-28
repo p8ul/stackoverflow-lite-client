@@ -5,9 +5,7 @@ export  const createQuestions = (data, id) => {
       <div class="question-list-item fade" data-key="${id}">
             <div class="col-6">
                 <h2>
-                    <a class="text-primary" href="question_answers.html?id=${data.question_id}">
-                        ${data.title}
-                    </a>
+                    <a class="text-primary" href="question_answers.html?id=${data.question_id}">${data.title}</a>
                 </h2>                
                 <h5 class="text-grey">${dateFormatter(data.date)} <span class="text-primary"> by ${data.username}</span></h5>
             </div> 

@@ -2,10 +2,10 @@
 
 import { 
 	removeErrors, 
-	resetSignupDom, $on
+	resetSignupDom, $on, passwordChanged
 } from '../../utils';
 import { signupNode } from './Nodes';
-import { signUp, passwordChanged } from './actions';
+import { signUp } from './actions';
 
 export default class SignUp {
 	constructor () {

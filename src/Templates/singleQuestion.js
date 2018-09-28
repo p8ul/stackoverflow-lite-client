@@ -4,9 +4,7 @@ export  const questionBodyTemplate = (data) => {
 	return `
     <div class="question-list-item">
             <div class="col-10">
-                <p>
-                    ${data.body}
-                </p>                
+                <p class="question-body">${data.body}</p>                
                 <h5 class="text-grey">${dateFormatter(data.date)} <span class="text-primary"> by ${data.username}</span></h5>
                 
             </div> 

@@ -6,6 +6,27 @@ Client app for [stackoverflow lite](https://github.com/p8ul/stackoverflow-lite/)
 ## Heroku deployment
 > **[Check it out](https://stackoverflow-client.herokuapp.com/)**
 
+## Screen Shots
+### Login Page
+![Login page](/screenshots/login.png?raw=true "Login")
+
+### Sign up Page
+![Sign Up](/screenshots/signup.png?raw=true "Signup")
+
+### Ask Question Page
+![Ask Question](/screenshots/ask.png?raw=true "Ask question")
+
+### Profile Page
+![Profile](/screenshots/signup.png?raw=true "Profile")
+
+### Questions Page
+![Questions Page](/screenshots/signup.png?raw=true "Questions")
+
+### Single Question Page
+![Single Question](/screenshots/signup.png?raw=true "Single Question")
+
+
+
 ## How should this be manually tested?
 Clone repository
 ```

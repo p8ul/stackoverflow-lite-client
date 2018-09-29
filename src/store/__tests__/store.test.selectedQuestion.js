@@ -4,7 +4,7 @@ import {
 	SET_QUESTION,
 	TEST_SELETED_QUESTION_PAYLOAD    
 } from '../../Constants';
-import { selectedQuestion } from '../selectedQuestion';
+import { selectedQuestion, getAnswer } from '../selectedQuestion';
 
 const initialState = TEST_SELETED_QUESTION_PAYLOAD;
 
@@ -26,3 +26,8 @@ test('Should set selected question comments', () => {
 	selectedQuestion({type: SET_COMMENTS, payload: initialState.comments});
 	expect(selectedQuestion().comments).toEqual(initialState.comments);
 });
+
+test('should select an answer', () => {
+	expect(getAnswer(27).answer_id).toBe(27);
+});
+

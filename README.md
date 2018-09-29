@@ -8,7 +8,7 @@ Client app for [stackoverflow lite](https://github.com/p8ul/stackoverflow-lite/)
 
 ## Screen Shots
 ### Login Page
-![Login page](/screenshots/login.png?raw=true "Login")
+![Login page](/screenshots/login.jpg?raw=true "Login")
 
 ### Sign up Page
 ![Sign Up](/screenshots/signup.png?raw=true "Signup")

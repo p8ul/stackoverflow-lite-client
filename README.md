@@ -17,13 +17,13 @@ Client app for [stackoverflow lite](https://github.com/p8ul/stackoverflow-lite/)
 ![Ask Question](/screenshots/ask.png?raw=true "Ask question")
 
 ### Profile Page
-![Profile](/screenshots/signup.png?raw=true "Profile")
+![Profile](/screenshots/profile.png?raw=true "Profile")
 
 ### Questions Page
-![Questions Page](/screenshots/signup.png?raw=true "Questions")
+![Questions Page](/screenshots/questions.png?raw=true "Questions")
 
 ### Single Question Page
-![Single Question](/screenshots/signup.png?raw=true "Single Question")
+![Single Question](/screenshots/question.png?raw=true "Single Question")
 
 
 
